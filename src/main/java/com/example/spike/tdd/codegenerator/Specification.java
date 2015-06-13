@@ -86,6 +86,6 @@ class Specification {
 	}
 
 	public Object getReturnValue () {
-		return 4;
+		return parametersOnly(testCode).get(0);
 	}
 }
