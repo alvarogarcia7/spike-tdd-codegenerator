@@ -8,6 +8,7 @@ class MethodBuilder implements Builder<String> {
 	private String methodName;
 	private String formalParametersAsString;
 	private String body;
+	private String visibility = "public";
 
 	public static MethodBuilder aNew () {
 		return new MethodBuilder();
@@ -20,7 +21,7 @@ class MethodBuilder implements Builder<String> {
 
 	@Override
 	public String build () {
-		return "public " + returnType.getSimpleName()+" " + methodName + "("+formalParametersAsString+"){ " +
+		return visibility + " " + returnType.getSimpleName()+" " + methodName + "("+formalParametersAsString+"){ " +
 				body+" }";
 	}
 
