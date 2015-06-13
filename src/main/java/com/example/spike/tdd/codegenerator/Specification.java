@@ -44,7 +44,7 @@ class Specification {
 				'}';
 	}
 
-	public String getReturnType () {
-		return null;
+	public Class getReturnType () {
+		return Integer.class;
 	}
 }

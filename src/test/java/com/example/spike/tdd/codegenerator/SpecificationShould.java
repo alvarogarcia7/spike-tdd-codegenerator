@@ -1,9 +1,9 @@
 package com.example.spike.tdd.codegenerator;
 
+import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
 public class SpecificationShould {
@@ -21,8 +21,15 @@ public class SpecificationShould {
 
 	@Test
 	public void detect_the_return_type_as_integer () {
+		assertThatClassAssignableFrom(sut.getReturnType(), is(Integer.class));
+	}
 
-		assertThat(sut.getReturnType(), instanceOf(Integer.class));
+	private Class is (final Class returnType) {
+		return returnType;
+	}
+
+	private void assertThatClassAssignableFrom (final Class actual, final Class expected) {
+		assertThat(expected.isAssignableFrom(actual), Is.is(true));
 	}
 
 }
