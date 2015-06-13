@@ -121,7 +121,7 @@ class Specification {
 	}
 
 	private List<String> getParametersWithNames (final List<String> parameterTypes) {
-		final String[] names = new String[]{"x", "y", "z", "a", "b", "c"};
+		final String[] names = new String[]{"x", "y", "z"};
 
 		final List<String> parametersWithNames = zip(parameterTypes, names, " ");
 		return parametersWithNames;

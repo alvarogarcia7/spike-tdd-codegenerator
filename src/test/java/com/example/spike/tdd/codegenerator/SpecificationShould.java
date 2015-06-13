@@ -60,7 +60,9 @@ public class SpecificationShould {
 				"");
 
 		MatcherAssert.assertThat(sut.getFormalParametersAsString(), Matchers.is(
-				"Integer x, Integer y, Integer z, Integer a, Integer b, Integer c, Integer var6, Integer var7, Integer var8, " +
+				"Integer x, Integer y, Integer z, Integer var3, Integer var4, Integer var5, Integer var6, Integer " +
+						"var7, " +
+						"Integer var8, " +
 						"Integer var9, Integer var10, Integer var11, Integer var12, Integer var13, Integer var14"));
 	}
 
