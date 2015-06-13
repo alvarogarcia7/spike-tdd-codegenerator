@@ -4,6 +4,7 @@ import com.sun.istack.internal.Builder;
 
 class MethodBuilder implements Builder<String> {
 
+	public static final String SPACE = " ";
 	private Class returnType;
 	private String methodName;
 	private String formalParametersAsString;
@@ -21,8 +22,16 @@ class MethodBuilder implements Builder<String> {
 
 	@Override
 	public String build () {
-		return visibility + " " + returnType.getSimpleName()+" " + methodName + "("+formalParametersAsString+"){ " +
-				body+" }";
+		return visibility + SPACE + returnType.getSimpleName() + SPACE + methodName +
+				putParenthesisAround(formalParametersAsString) + putBracketsAround(body);
+	}
+
+	private String putBracketsAround (final String body) {
+		return "{ " + body + " }";
+	}
+
+	private String putParenthesisAround (final String text) {
+		return "(" + text + ")";
 	}
 
 	public MethodBuilder withName (final String methodName) {
