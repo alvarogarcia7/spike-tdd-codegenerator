@@ -51,6 +51,12 @@ public class SpecificationShould {
 				"return 0; }"));
 	}
 
+	@Test
+	public void generate_the_formal_parameters () {
+
+		MatcherAssert.assertThat(sut.getFormalParametersAsString(), Matchers.is("Integer x, Integer y"));
+	}
+
 	private Class is (final Class returnType) {
 		return returnType;
 	}

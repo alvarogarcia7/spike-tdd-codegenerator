@@ -93,4 +93,8 @@ class Specification {
 		return "public " +getReturnType().getSimpleName() +" "+ getMethodName() +"(Integer x, Integer y)" + "{ " +
 				"return 0; }";
 	}
+
+	public String getFormalParametersAsString () {
+		return null;
+	}
 }
