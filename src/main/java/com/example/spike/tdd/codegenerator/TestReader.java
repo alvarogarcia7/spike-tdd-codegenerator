@@ -55,7 +55,9 @@ public class TestReader {
 	}
 
 	private String getProductionCode (final List<String> trimmedLines) {
-		final String productionCode = newTextRemover(trimmedLines.get(i)).remove(LITERAL_COMMA_ENDING_LINE).get();
+		final String productionCode = newTextRemover(trimmedLines.get(i))
+				.remove(LITERAL_COMMA_ENDING_LINE)
+				.get();
 		nextLine();
 		return productionCode;
 	}
