@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
 public class TestReader {
 
 	public static final String TEST_ANNOTATION = "@Test";
+	public static final String LITERAL_PARENTHESIS_AND_SEMICOLON_ENDING_LINE = "\\);$";
+	public static final String LITERAL_COMMA_ENDING_LINE = ",$";
+	public static final String LITERAL_QUALIFIERS_FOR_TEST_METHOD = "\\s*public\\s*void\\s*";
+	public static final String LITERAL_PARENTHESIS_AND_BRACKET = "\\s*\\(\\)\\s*\\{";
 	private int i;
 
 	public List<Specification> read (Path path){
@@ -43,20 +47,20 @@ public class TestReader {
 	}
 
 	private String getTestCode (final List<String> trimmedLines) {
-		final String testCode = trimmedLines.get(i).replaceFirst("\\);$", "");
+		final String testCode = trimmedLines.get(i).replaceFirst(LITERAL_PARENTHESIS_AND_SEMICOLON_ENDING_LINE, "");
 		nextLine();
 		return testCode;
 	}
 
 	private String getProductionCode (final List<String> trimmedLines) {
-		final String productionCode = trimmedLines.get(i).replaceFirst(",$", "");
+		final String productionCode = trimmedLines.get(i).replaceFirst(LITERAL_COMMA_ENDING_LINE, "");
 		nextLine();
 		return productionCode;
 	}
 
 	private String getSpecHeader (final List<String> trimmedLines) {
 		 String methodHeader = trimmedLines.get(i);
-		methodHeader = methodHeader.replaceFirst("\\s*public\\s*void\\s*","").replaceFirst("\\s*\\(\\)\\s*\\{","");
+		methodHeader = methodHeader.replaceFirst(LITERAL_QUALIFIERS_FOR_TEST_METHOD,"").replaceFirst(LITERAL_PARENTHESIS_AND_BRACKET,"");
 		nextLine();
 		return methodHeader;
 	}
