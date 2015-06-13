@@ -15,7 +15,7 @@ public class TestReader {
 	public static final String LITERAL_COMMA_ENDING_LINE = ",$";
 	public static final String LITERAL_QUALIFIERS_FOR_TEST_METHOD = "\\s*public\\s*void\\s*";
 	public static final String LITERAL_PARENTHESIS_AND_BRACKET = "\\s*\\(\\)\\s*\\{";
-	private int i;
+	private int currentLine;
 
 	public List<Specification> read (Path path){
 		try {
@@ -33,7 +33,7 @@ public class TestReader {
 
 		final List<String> trimmedLines = trim(lines);
 
-		i= trimmedLines.indexOf(TEST_ANNOTATION);
+		currentLine = trimmedLines.indexOf(TEST_ANNOTATION);
 		skip("test_annotation");
 		final String methodHeader = getSpecHeader(trimmedLines);
 		skip("assert");
@@ -47,7 +47,7 @@ public class TestReader {
 	}
 
 	private String getTestCode (final List<String> trimmedLines) {
-		final String testCode = newTextRemover(trimmedLines.get(i))
+		final String testCode = newTextRemover(trimmedLines.get(currentLine))
 				.remove(LITERAL_PARENTHESIS_AND_SEMICOLON_ENDING_LINE)
 				.get();
 		nextLine();
@@ -55,7 +55,7 @@ public class TestReader {
 	}
 
 	private String getProductionCode (final List<String> trimmedLines) {
-		final String productionCode = newTextRemover(trimmedLines.get(i))
+		final String productionCode = newTextRemover(trimmedLines.get(currentLine))
 				.remove(LITERAL_COMMA_ENDING_LINE)
 				.get();
 		nextLine();
@@ -67,7 +67,7 @@ public class TestReader {
 	}
 
 	private String getSpecHeader (final List<String> trimmedLines) {
-		 String methodHeader = trimmedLines.get(i);
+		 String methodHeader = trimmedLines.get(currentLine);
 
 		methodHeader = newTextRemover(methodHeader)
 				.remove(LITERAL_QUALIFIERS_FOR_TEST_METHOD)
@@ -78,7 +78,7 @@ public class TestReader {
 	}
 
 	private void nextLine () {
-		i++;
+		currentLine++;
 	}
 
 	private void skip (final String _) {
