@@ -1,6 +1,8 @@
 package com.example.spike.tdd.codegenerator;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Specification {
 	private final String name;
@@ -59,6 +61,25 @@ class Specification {
 	}
 
 	public List<Object> getParameters () {
-		return null;
+		return parametersOnly(productionCode);
+	}
+
+	private List<Object> parametersOnly (final String code) {
+		final String allParameters = code.replaceFirst(".*\\(", "").replaceAll("\\)", "");
+		final String[] parameters = allParameters.split(",");
+		return toParameter(parameters);
+	}
+
+	private List<Object> toParameter (final String[] parameters) {
+		return Arrays.asList(parameters).stream().map(current -> current.trim()).map(current ->
+		{
+			try {
+				return
+						Integer.valueOf(current);
+			} catch (Exception e) {
+				throw new RuntimeException("This type '" + current + "' is not yet known");
+			}
+
+		}).collect(Collectors.toList());
 	}
 }
