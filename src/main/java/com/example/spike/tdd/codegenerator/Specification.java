@@ -88,4 +88,9 @@ class Specification {
 	public Object getReturnValue () {
 		return parametersOnly(testCode).get(0);
 	}
+
+	public String getProductionMethod () {
+		return "public " +getReturnType().getSimpleName() +" "+ getMethodName() +"(Integer x, Integer y)" + "{ " +
+				"return 0; }";
+	}
 }

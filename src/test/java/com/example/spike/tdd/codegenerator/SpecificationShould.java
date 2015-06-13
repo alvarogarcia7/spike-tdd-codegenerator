@@ -44,6 +44,13 @@ public class SpecificationShould {
 		MatcherAssert.assertThat(sut.getParameters(), hasItems(2, 2));
 	}
 
+	@Test
+	public void generate_the_production_method () {
+
+		MatcherAssert.assertThat(sut.getProductionMethod(), Matchers.is("public Integer sum(Integer x, Integer y){ " +
+				"return 0; }"));
+	}
+
 	private Class is (final Class returnType) {
 		return returnType;
 	}
