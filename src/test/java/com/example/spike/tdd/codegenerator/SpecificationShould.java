@@ -6,6 +6,7 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertThat;
 
 public class SpecificationShould {
@@ -30,6 +31,12 @@ public class SpecificationShould {
 	public void assert_on_the_production_method () {
 
 		MatcherAssert.assertThat(sut.getMethodName(), Matchers.is("sum"));
+	}
+
+	@Test
+	public void assert_on_the_production_parameters () {
+
+		MatcherAssert.assertThat(sut.getParameters(), hasItems(2, 2));
 	}
 
 	private Class is (final Class returnType) {

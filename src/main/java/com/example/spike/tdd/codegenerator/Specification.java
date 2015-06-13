@@ -1,5 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
+import java.util.List;
+
 class Specification {
 	private final String name;
 	private final String productionCode;
@@ -54,5 +56,9 @@ class Specification {
 
 	private String methodOnly (final String code) {
 		return code.split("\\(")[0];
+	}
+
+	public List<Object> getParameters () {
+		return null;
 	}
 }
