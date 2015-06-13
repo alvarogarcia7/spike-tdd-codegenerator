@@ -60,8 +60,11 @@ public class TestReader {
 
 	private String getSpecHeader (final List<String> trimmedLines) {
 		 String methodHeader = trimmedLines.get(i);
-		methodHeader = new TextRemover(methodHeader).remove(LITERAL_QUALIFIERS_FOR_TEST_METHOD).remove
-				(LITERAL_PARENTHESIS_AND_BRACKET).get();
+		
+		methodHeader = new TextRemover(methodHeader)
+				.remove(LITERAL_QUALIFIERS_FOR_TEST_METHOD)
+				.remove(LITERAL_PARENTHESIS_AND_BRACKET)
+				.get();
 		nextLine();
 		return methodHeader;
 	}
