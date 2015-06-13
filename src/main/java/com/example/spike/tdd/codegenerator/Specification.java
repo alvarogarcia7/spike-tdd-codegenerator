@@ -71,16 +71,18 @@ class Specification {
 	}
 
 	private List<Object> toParameter (final String[] parameters) {
-		return Arrays.asList(parameters).stream().map(current -> current.trim()).map(current ->
-		{
-			try {
-				return
-						Integer.valueOf(current);
-			} catch (Exception e) {
-				throw new RuntimeException("This type '" + current + "' is not yet known");
-			}
+		return Arrays.asList(parameters).stream()
+				.map(current -> current.trim())
+				.map(current -> getValueFrom(current))
+				.collect(Collectors.toList());
+	}
 
-		}).collect(Collectors.toList());
+	private Object getValueFrom (final String current) {
+		try {
+			return Integer.valueOf(current);
+		} catch (Exception e) {
+			throw new RuntimeException("This type '" + current + "' is not yet known");
+		}
 	}
 
 	public Object getReturnValue () {
