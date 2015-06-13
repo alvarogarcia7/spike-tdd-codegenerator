@@ -4,7 +4,7 @@ import com.sun.istack.internal.Builder;
 
 class MethodBuilder implements Builder<String> {
 
-	public static final String SPACE = " ";
+	private static final String SPACE = " ";
 	private Class returnType;
 	private String methodName;
 	private String formalParametersAsString;
