@@ -30,7 +30,7 @@ public class TestReader {
 
 	private List<Specification> findTests (final List<String> lines) {
 
-		final List<String> trimmedLines = trim(lines);
+		final List<String> trimmedLines = trimAndDeleteEmptyLines(lines);
 
 		currentLine = trimmedLines.indexOf(TEST_ANNOTATION);
 		skip("test_annotation");
@@ -84,7 +84,7 @@ public class TestReader {
 		nextLine();
 	}
 
-	private List<String> trim (final List<String> lines) {
+	private List<String> trimAndDeleteEmptyLines (final List<String> lines) {
 		return lines.stream()
 				.map(current -> current.trim())
 				.filter(current -> current.length() > 0)
