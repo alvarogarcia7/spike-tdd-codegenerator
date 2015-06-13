@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class TestReader {
 
+	public static final String TEST_ANNOTATION = "@Test";
 	private int i;
 
 	public List<Specification> read (Path path){
@@ -28,8 +29,7 @@ public class TestReader {
 
 		final List<String> trimmedLines = trim(lines);
 
-		final int testAppearsAt = trimmedLines.indexOf("@Test");
-		i=testAppearsAt;
+		i= trimmedLines.indexOf(TEST_ANNOTATION);
 		skip("test_annotation");
 		final String methodHeader = getSpecHeader(trimmedLines);
 		skip("assert");
