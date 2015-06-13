@@ -29,7 +29,6 @@ public class TestReader {
 		final List<String> trimmedLines = trim(lines);
 
 		final int testAppearsAt = trimmedLines.indexOf("@Test");
-		System.out.println(testAppearsAt);
 		i=testAppearsAt;
 		skip("test_annotation");
 		final String methodHeader = getSpecHeader(trimmedLines);
