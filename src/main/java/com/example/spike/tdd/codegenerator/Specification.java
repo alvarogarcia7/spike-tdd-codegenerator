@@ -97,8 +97,9 @@ class Specification {
 	}
 
 	public String getFormalParametersAsString () {
-		final List<String> parameterTypes = getParameters().stream().map(current -> current.getClass().getSimpleName()).collect(Collectors
-				.toList());
+		final List<String> parameterTypes = getParameters().stream()
+				.map(current -> current.getClass().getSimpleName())
+				.collect(Collectors.toList());
 
 		final String[] names = new String[]{"x", "y", "z", "a", "b", "c"};
 
