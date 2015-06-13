@@ -67,7 +67,7 @@ public class TestReader {
 	}
 
 	private void skip (final String reason) {
-		i++;
+		nextLine();
 	}
 
 	private List<String> trim (final List<String> lines) {
