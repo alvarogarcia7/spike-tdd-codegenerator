@@ -84,6 +84,6 @@ class Specification {
 	}
 
 	public Object getReturnValue () {
-		return null;
+		return 4;
 	}
 }
