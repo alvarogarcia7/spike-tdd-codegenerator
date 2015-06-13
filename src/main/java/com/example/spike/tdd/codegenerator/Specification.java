@@ -92,7 +92,8 @@ class Specification {
 	}
 
 	public String getProductionMethod () {
-		return "public " +getReturnType().getSimpleName() +" "+ getMethodName() +"(Integer x, Integer y)" + "{ " +
+		return "public " +getReturnType().getSimpleName() +" "+ getMethodName() +"("+getFormalParametersAsString()+")" +
+				 "{ " +
 				"return 0; }";
 	}
 
