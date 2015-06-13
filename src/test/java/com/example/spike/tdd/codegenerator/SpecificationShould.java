@@ -28,6 +28,11 @@ public class SpecificationShould {
 	}
 
 	@Test
+	public void detect_the_return_value () {
+		assertThat(sut.getReturnValue().equals(4), Is.is(true));
+	}
+
+	@Test
 	public void assert_on_the_production_method () {
 
 		MatcherAssert.assertThat(sut.getMethodName(), Matchers.is("sum"));

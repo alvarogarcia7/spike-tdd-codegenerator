@@ -82,4 +82,8 @@ class Specification {
 
 		}).collect(Collectors.toList());
 	}
+
+	public Object getReturnValue () {
+		return null;
+	}
 }
