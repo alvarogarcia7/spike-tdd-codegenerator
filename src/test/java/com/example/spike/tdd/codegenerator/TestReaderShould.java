@@ -26,9 +26,9 @@ public class TestReaderShould {
 		assertThat(strings.size(), is(not(0)));
 //		strings.forEach(System.out::println);
 
-		final List<TestReader.Specification> specs = new TestReader().read(path);
+		final List<Specification> specs = new TestReader().read(path);
 
-		assertThat(specs, hasItems(new TestReader.Specification(
+		assertThat(specs, hasItems(new Specification(
 				"add_two_numbers",
 				"sum(2, 2)",
 				"is(4)")));
