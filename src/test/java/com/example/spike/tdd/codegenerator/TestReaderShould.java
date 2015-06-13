@@ -28,7 +28,10 @@ public class TestReaderShould {
 
 		final List<TestReader.Specification> specs = new TestReader().read(path);
 
-		assertThat(specs, hasItems(new TestReader.Specification("public void add_two_numbers () {", "sum(2, 2),", "is(4));")));
+		assertThat(specs, hasItems(new TestReader.Specification(
+				"public void add_two_numbers () {",
+				"sum(2, 2),",
+				"is(4));")));
 	}
 
 }
