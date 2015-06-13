@@ -43,4 +43,8 @@ class Specification {
 				", testCode='" + testCode + '\'' +
 				'}';
 	}
+
+	public String getReturnType () {
+		return null;
+	}
 }
