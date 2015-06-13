@@ -1,7 +1,9 @@
 package com.example.spike.tdd.codegenerator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 class Specification {
@@ -95,6 +97,24 @@ class Specification {
 	}
 
 	public String getFormalParametersAsString () {
-		return null;
+		final List<String> parameterTypes = getParameters().stream().map(current -> current.getClass().getSimpleName()).collect(Collectors
+				.toList());
+
+		final String[] names = new String[]{"x", "y", "z", "a", "b", "c"};
+
+		final List<String> parametersWithNames = new ArrayList<>();
+
+
+		int i=0;
+		for (String parameterType : parameterTypes) {
+			parametersWithNames.add(parameterType+" "+names[i]);
+			i++;
+		}
+
+		StringJoiner stringJoiner = new StringJoiner(", ");
+		parametersWithNames.forEach(stringJoiner::add);
+
+		return stringJoiner.toString();
 	}
+
 }
