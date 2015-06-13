@@ -60,7 +60,8 @@ public class TestReader {
 
 	private String getSpecHeader (final List<String> trimmedLines) {
 		 String methodHeader = trimmedLines.get(i);
-		methodHeader = methodHeader.replaceFirst(LITERAL_QUALIFIERS_FOR_TEST_METHOD,"").replaceFirst(LITERAL_PARENTHESIS_AND_BRACKET,"");
+		methodHeader = new TextRemover(methodHeader).remove(LITERAL_QUALIFIERS_FOR_TEST_METHOD).remove
+				(LITERAL_PARENTHESIS_AND_BRACKET).get();
 		nextLine();
 		return methodHeader;
 	}
@@ -78,4 +79,21 @@ public class TestReader {
 				.toList());
 	}
 
+	private class TextRemover {
+		private String currentText;
+
+		public TextRemover (final String initialText) {
+
+			currentText = initialText;
+		}
+
+		public TextRemover remove (final String text) {
+			currentText = currentText.replaceFirst(text, "");
+			return this;
+		}
+
+		public String get () {
+			return currentText;
+		}
+	}
 }
