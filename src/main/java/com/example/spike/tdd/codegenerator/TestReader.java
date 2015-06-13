@@ -47,8 +47,9 @@ public class TestReader {
 	}
 
 	private String getTestCode (final List<String> trimmedLines) {
-		final String testCode = newTextRemover(trimmedLines.get(i)).remove
-				(LITERAL_PARENTHESIS_AND_SEMICOLON_ENDING_LINE).get();
+		final String testCode = newTextRemover(trimmedLines.get(i))
+				.remove(LITERAL_PARENTHESIS_AND_SEMICOLON_ENDING_LINE)
+				.get();
 		nextLine();
 		return testCode;
 	}
