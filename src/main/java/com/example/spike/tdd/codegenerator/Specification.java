@@ -47,4 +47,8 @@ class Specification {
 	public Class getReturnType () {
 		return Integer.class;
 	}
+
+	public String getMethodName () {
+		return null;
+	}
 }

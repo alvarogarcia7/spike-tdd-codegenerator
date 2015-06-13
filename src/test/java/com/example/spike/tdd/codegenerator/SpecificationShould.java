@@ -1,5 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +24,12 @@ public class SpecificationShould {
 	@Test
 	public void detect_the_return_type_as_integer () {
 		assertThatClassAssignableFrom(sut.getReturnType(), is(Integer.class));
+	}
+
+	@Test
+	public void assert_on_the_production_method () {
+
+		MatcherAssert.assertThat(sut.getMethodName(), Matchers.is("sum"));
 	}
 
 	private Class is (final Class returnType) {
