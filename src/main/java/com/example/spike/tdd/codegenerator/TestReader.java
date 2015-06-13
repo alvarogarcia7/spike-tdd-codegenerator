@@ -84,8 +84,10 @@ public class TestReader {
 	}
 
 	private List<String> trim (final List<String> lines) {
-		return lines.stream().map(current -> current.trim()).filter(current -> current.length() > 0).collect(Collectors
-				.toList());
+		return lines.stream()
+				.map(current -> current.trim())
+				.filter(current -> current.length() > 0)
+				.collect(Collectors.toList());
 	}
 
 	private class TextRemover {
