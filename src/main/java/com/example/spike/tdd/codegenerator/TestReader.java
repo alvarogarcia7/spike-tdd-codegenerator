@@ -21,7 +21,6 @@ public class TestReader {
 		try {
 			final List<String> lines = Files.readAllLines(path, Charset.defaultCharset());
 			List<Specification> tests = findTests(lines);
-			assert tests.size() == 1;
 			return tests;
 		} catch (IOException e) {
 			e.printStackTrace();
