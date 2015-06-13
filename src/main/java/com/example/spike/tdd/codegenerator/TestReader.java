@@ -47,20 +47,21 @@ public class TestReader {
 	}
 
 	private String getTestCode (final List<String> trimmedLines) {
-		final String testCode = trimmedLines.get(i).replaceFirst(LITERAL_PARENTHESIS_AND_SEMICOLON_ENDING_LINE, "");
+		final String testCode = new TextRemover(trimmedLines.get(i)).remove
+				(LITERAL_PARENTHESIS_AND_SEMICOLON_ENDING_LINE).get();
 		nextLine();
 		return testCode;
 	}
 
 	private String getProductionCode (final List<String> trimmedLines) {
-		final String productionCode = trimmedLines.get(i).replaceFirst(LITERAL_COMMA_ENDING_LINE, "");
+		final String productionCode = new TextRemover(trimmedLines.get(i)).remove(LITERAL_COMMA_ENDING_LINE).get();
 		nextLine();
 		return productionCode;
 	}
 
 	private String getSpecHeader (final List<String> trimmedLines) {
 		 String methodHeader = trimmedLines.get(i);
-		
+
 		methodHeader = new TextRemover(methodHeader)
 				.remove(LITERAL_QUALIFIERS_FOR_TEST_METHOD)
 				.remove(LITERAL_PARENTHESIS_AND_BRACKET)
