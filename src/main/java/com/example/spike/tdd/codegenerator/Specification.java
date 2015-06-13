@@ -1,5 +1,9 @@
 package com.example.spike.tdd.codegenerator;
 
+
+
+import com.sun.istack.internal.Builder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -92,10 +96,48 @@ class Specification {
 	}
 
 	public String getProductionMethod () {
-		return "public " +getReturnType().getSimpleName() +" "+ getMethodName() +"("+getFormalParametersAsString()+")" +
-				 "{ " +
-				"return 0; }";
+		return  MethodBuilder.aNew().withReturn(getReturnType()).withName(getMethodName()).withFormalParameters
+				(getFormalParametersAsString()).withBody("return 0;").build();
 	}
+
+	private static class MethodBuilder implements Builder<String>{
+
+		private Class returnType;
+		private String methodName;
+		private String formalParametersAsString;
+		private String body;
+
+		public static MethodBuilder aNew () {
+			return new MethodBuilder();
+		}
+
+		public MethodBuilder withReturn (final Class returnType) {
+			this.returnType = returnType;
+			return this;
+		}
+
+		@Override
+		public String build () {
+			return "public " + returnType.getSimpleName()+" " + methodName + "("+formalParametersAsString+"){ " +
+					body+" }";
+		}
+
+		public MethodBuilder withName (final String methodName) {
+			this.methodName = methodName;
+			return this;
+		}
+
+		public MethodBuilder withFormalParameters (final String formalParametersAsString) {
+			this.formalParametersAsString = formalParametersAsString;
+			return this;
+		}
+
+		public MethodBuilder withBody (final String body) {
+			this.body = body;
+			return this;
+		}
+	}
+
 
 	public String getFormalParametersAsString () {
 		final List<String> parameterTypes = getParameters().stream()
