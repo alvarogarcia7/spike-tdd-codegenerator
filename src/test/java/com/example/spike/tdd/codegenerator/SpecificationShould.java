@@ -52,6 +52,21 @@ public class SpecificationShould {
 	}
 
 	@Test
+	public void never_stop_generating_parameter_names () {
+
+		sut = new Specification(
+				"",
+				"sum(2, 2,3,1,1,1,1,1,1,1,1,1,1,1,1)",
+				"");
+
+		MatcherAssert.assertThat(sut.getFormalParametersAsString(), Matchers.is(
+				"Integer x, Integer y, Integer z, Integer a, Integer b, Integer c, Integer var6, Integer var7, Integer var8, " +
+						"Integer var9, Integer var10, Integer var11, Integer var12, Integer var13, Integer var14"));
+	}
+
+
+
+	@Test
 	public void generate_the_formal_parameters () {
 
 		MatcherAssert.assertThat(sut.getFormalParametersAsString(), Matchers.is("Integer x, Integer y"));

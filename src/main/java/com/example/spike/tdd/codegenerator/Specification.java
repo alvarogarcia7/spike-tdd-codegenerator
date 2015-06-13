@@ -133,7 +133,13 @@ class Specification {
 
 		int i=0;
 		for (String parameterType : parameterTypes) {
-			parametersWithNames.add(parameterType+ joiner +names[i]);
+			String name1;
+			try {
+				name1 = names[i];
+			} catch (ArrayIndexOutOfBoundsException e) {
+				name1 = "var" + i;
+			}
+			parametersWithNames.add(parameterType + joiner + name1);
 			i++;
 		}
 		return parametersWithNames;
