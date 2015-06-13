@@ -1,8 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
-import com.sun.istack.internal.Builder;
 
-class MethodBuilder implements Builder<String> {
+class MethodBuilder {
 
 	private static final String SPACE = " ";
 	private Class returnType;
@@ -35,7 +34,6 @@ class MethodBuilder implements Builder<String> {
 		return this;
 	}
 
-	@Override
 	public String build () {
 		return visibility + SPACE + returnType.getSimpleName() + SPACE + methodName +
 				putParenthesisAround(formalParametersAsString) + putBracketsAround(body);

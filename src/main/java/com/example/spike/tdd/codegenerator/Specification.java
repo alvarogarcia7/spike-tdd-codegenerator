@@ -100,25 +100,43 @@ class Specification {
 
 
 	public String getFormalParametersAsString () {
-		final List<String> parameterTypes = getParameters().stream()
-				.map(current -> current.getClass().getSimpleName())
-				.collect(Collectors.toList());
 
+		final List<String> parameterTypes = getParameterTypes();
+		final List<String> parametersWithNames = getParametersWithNames(parameterTypes);
+
+		return joinParameters(parametersWithNames);
+	}
+
+	private String joinParameters (final List<String> parametersWithNames) {
+		StringJoiner stringJoiner = new StringJoiner(", ");
+		parametersWithNames.forEach(stringJoiner::add);
+
+		return stringJoiner.toString();
+	}
+
+	private List<String> getParameterTypes () {
+		return getParameters().stream()
+					.map(current -> current.getClass().getSimpleName())
+					.collect(Collectors.toList());
+	}
+
+	private List<String> getParametersWithNames (final List<String> parameterTypes) {
 		final String[] names = new String[]{"x", "y", "z", "a", "b", "c"};
 
+		final List<String> parametersWithNames = zip(parameterTypes, names, " ");
+		return parametersWithNames;
+	}
+
+	private List<String> zip (final List<String> parameterTypes, final String[] names, final String joiner) {
 		final List<String> parametersWithNames = new ArrayList<>();
 
 
 		int i=0;
 		for (String parameterType : parameterTypes) {
-			parametersWithNames.add(parameterType+" "+names[i]);
+			parametersWithNames.add(parameterType+ joiner +names[i]);
 			i++;
 		}
-
-		StringJoiner stringJoiner = new StringJoiner(", ");
-		parametersWithNames.forEach(stringJoiner::add);
-
-		return stringJoiner.toString();
+		return parametersWithNames;
 	}
 
 }
