@@ -49,6 +49,10 @@ class Specification {
 	}
 
 	public String getMethodName () {
-		return null;
+		return methodOnly(productionCode);
+	}
+
+	private String methodOnly (final String code) {
+		return code.split("\\(")[0];
 	}
 }
