@@ -66,7 +66,7 @@ public class TestReader {
 		i++;
 	}
 
-	private void skip (final String reason) {
+	private void skip (final String _) {
 		nextLine();
 	}
 
