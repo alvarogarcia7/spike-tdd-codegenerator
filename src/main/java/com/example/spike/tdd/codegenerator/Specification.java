@@ -49,7 +49,7 @@ class Specification {
 	}
 
 	public Class getReturnType () {
-		return Integer.class;
+		return getReturnValue().getClass();
 	}
 
 	public String getMethodName () {
