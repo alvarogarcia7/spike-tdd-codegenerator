@@ -105,8 +105,7 @@ class Specification {
 
 		int i=0;
 		for (String parameterType : parameterTypes) {
-			String variableName;
-			variableName = getVariableName(names, i);
+			final String variableName = getVariableName(names, i);
 			parametersWithNames.add(parameterType + joiner + variableName);
 			i++;
 		}
