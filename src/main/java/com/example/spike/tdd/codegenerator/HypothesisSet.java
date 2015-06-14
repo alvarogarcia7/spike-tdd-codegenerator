@@ -13,6 +13,16 @@ public class HypothesisSet {
 	}
 
 	public Object findFormula () {
-		return (Function) (o) -> (int)o;
+
+		final Hypothesis firstHypothesis = hypotheses.get(0);
+		final List<Object> firstParameters = firstHypothesis.getParameters();
+		assert (firstParameters.size() == 1);
+
+		final int input = (int)firstParameters.get(0);
+		final int output = (int) firstHypothesis.getOutput();
+
+		final int increment = output - input;
+
+		return (Function) (o) -> (int) o + increment;
 	}
 }

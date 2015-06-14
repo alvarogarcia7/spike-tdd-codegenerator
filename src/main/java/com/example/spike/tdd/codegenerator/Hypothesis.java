@@ -43,4 +43,8 @@ public class Hypothesis {
 	public List<Object> getParameters () {
 		return input;
 	}
+
+	public Object getOutput () {
+		return output;
+	}
 }
