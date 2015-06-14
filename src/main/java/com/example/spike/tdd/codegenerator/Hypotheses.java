@@ -1,6 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Hypotheses {
 	private List<Specification> specifications;
@@ -15,6 +16,7 @@ public class Hypotheses {
 	}
 
 	public List<Hypothesis> getHypotheses () {
-		return null;
+
+		return specifications.stream().map(current -> current.getHypothesis()).collect(Collectors.toList());
 	}
 }
