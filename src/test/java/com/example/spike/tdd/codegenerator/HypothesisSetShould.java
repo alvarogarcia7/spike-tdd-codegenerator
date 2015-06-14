@@ -19,10 +19,10 @@ public class HypothesisSetShould {
 
 	@Test
 	public void find_the_successor () {
-		findFormulaAndAssertItsCorrectness(3, 2);
+		findFormulaAndAssertItsCorrectness(2, 3);
 	}
 
-	private void findFormulaAndAssertItsCorrectness (final int output, final int input) {
+	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
 		sut = new HypothesisSet(Arrays.asList(new Hypothesis(Arrays.asList(input), output)));
 
 		final Object formula = sut.findFormula();
