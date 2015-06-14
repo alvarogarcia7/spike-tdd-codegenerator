@@ -1,14 +1,18 @@
 package com.example.spike.tdd.codegenerator;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class HypothesisSet {
 
-	public HypothesisSet (final List<Hypothesis> hypothesis) {
+	private final List<Hypothesis> hypotheses;
 
+	public HypothesisSet (final List<Hypothesis> hypotheses) {
+
+		this.hypotheses = hypotheses;
 	}
 
 	public Object findFormula () {
-		return null;
+		return (Function) (o) -> (int)o;
 	}
 }
