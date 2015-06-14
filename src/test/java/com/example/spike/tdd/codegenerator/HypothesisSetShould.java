@@ -11,8 +11,6 @@ import static org.hamcrest.Matchers.is;
 
 public class HypothesisSetShould {
 
-	private HypothesisSet sut;
-
 	@Test
 	public void find_the_identity () {
 		findFormulaAndAssertItsCorrectness(2, 2);
@@ -26,7 +24,7 @@ public class HypothesisSetShould {
 	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
 		final List<Object> parameters = Arrays.asList(input);
 		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
-		sut = new HypothesisSet(hypotheses);
+		final HypothesisSet sut = new HypothesisSet(hypotheses);
 
 		final Function formula = (Function)sut.findFormula();
 
