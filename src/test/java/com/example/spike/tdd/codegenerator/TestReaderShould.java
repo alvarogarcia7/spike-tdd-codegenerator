@@ -15,7 +15,7 @@ public class TestReaderShould {
 	@Test
 	public void read_sample_file_additionShould () throws IOException {
 
-		final Path path = javaFileFromTestResource("AdditionShould");
+		final Path path = javaSpecFromTestResource("Addition");
 
 		final List<Specification> specs = new TestReader().read(path);
 
@@ -28,7 +28,7 @@ public class TestReaderShould {
 	@Test
 	public void read_two_tests_in_the_same_file () throws IOException {
 
-		final Path path = javaFileFromTestResource("TwoAdditionsShould");
+		final Path path = javaSpecFromTestResource("TwoAdditions");
 
 		final List<Specification> specs = new TestReader().read(path);
 
@@ -46,7 +46,7 @@ public class TestReaderShould {
 				));
 	}
 
-	private Path javaFileFromTestResource (final String filename) {
-		return get("src/test/resources/" + filename + ".java");
+	private Path javaSpecFromTestResource (final String filename) {
+		return get("src/test/resources/" + filename + "Should.java");
 	}
 }
