@@ -34,7 +34,7 @@ public class TestReader {
 		final List<Specification> tests = new ArrayList<>();
 
 
-		while(isSpecificationAvailable(trimmedLines)) {
+		while(isSpecificationAvailableInWhichLine(trimmedLines)) {
 			final Specification specification = getSpecification(trimmedLines);
 			tests.add(specification);
 		}
@@ -42,7 +42,7 @@ public class TestReader {
 		return tests;
 	}
 
-	private boolean isSpecificationAvailable (final List<String> trimmedLines) {
+	private boolean isSpecificationAvailableInWhichLine (final List<String> trimmedLines) {
 
 		int i;
 		for(i=this.currentLine; i<trimmedLines.size(); i++){
@@ -52,7 +52,6 @@ public class TestReader {
 				return true;
 			}
 		}
-		this.currentLine = i - 1;
 		return false;
 	}
 
