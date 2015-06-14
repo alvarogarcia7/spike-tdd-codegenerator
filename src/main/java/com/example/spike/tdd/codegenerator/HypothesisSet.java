@@ -18,12 +18,11 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		final Function candidateFunction = getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters);
+		Function candidateFunction = getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters);
 
 		for (Hypothesis current : hypotheses) {
 			if (!candidateFunction.apply(current.getParameters().get(0)).equals(current.getOutput())) {
-				Function f = (o) -> 0;
-				return f;
+				candidateFunction = (o) -> 0;
 			}
 		}
 
