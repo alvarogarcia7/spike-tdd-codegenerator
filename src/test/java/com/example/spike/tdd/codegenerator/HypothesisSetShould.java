@@ -14,19 +14,15 @@ public class HypothesisSetShould {
 
 	@Test
 	public void find_the_identity () {
-		final int input = 2;
-		final int output = 2;
-		sut = new HypothesisSet(Arrays.asList(new Hypothesis(Arrays.asList(input), output)));
-
-		final Object formula = sut.findFormula();
-
-		assertThat(((Function) formula).apply(input), is(output));
+		findFormulaAndAssertItsCorrectness(2, 2);
 	}
 
 	@Test
 	public void find_the_successor () {
-		final int output = 3;
-		final int input = 2;
+		findFormulaAndAssertItsCorrectness(3, 2);
+	}
+
+	private void findFormulaAndAssertItsCorrectness (final int output, final int input) {
 		sut = new HypothesisSet(Arrays.asList(new Hypothesis(Arrays.asList(input), output)));
 
 		final Object formula = sut.findFormula();
