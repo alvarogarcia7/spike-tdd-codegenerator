@@ -18,11 +18,30 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
+		final Function candidateFunction = getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters);
+
+		for (Hypothesis current : hypotheses) {
+			if (!candidateFunction.apply(current.getParameters().get(0)).equals(current.getOutput())) {
+				Function f = (o) -> 0;
+				return f;
+			}
+		}
+
+		for (Hypothesis current : hypotheses) {
+			if (!candidateFunction.apply(current.getParameters().get(0)).equals(current.getOutput())) {
+				throw new UnsupportedOperationException("Not yet ready");
+			}
+		}
+
+		return candidateFunction;
+	}
+
+	private Function getFunctionBasedOnAddingDifference (final Hypothesis firstHypothesis, final List<Object> firstParameters) {
 		final int input = (int)firstParameters.get(0);
 		final int output = (int) firstHypothesis.getOutput();
 
 		final int increment = output - input;
 
-		return (Function) (o) -> (int) o + increment;
+		return (o) -> (int) o + increment;
 	}
 }
