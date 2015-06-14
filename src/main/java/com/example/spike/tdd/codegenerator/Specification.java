@@ -32,7 +32,7 @@ class Specification {
 		return code.split("\\(")[0];
 	}
 
-	public List<Object> getParameters () {
+	private List<Object> getParameters () {
 		return parametersOnly(productionCode);
 	}
 
