@@ -13,4 +13,8 @@ public class Hypotheses {
 	public List<Specification> getSpecifications () {
 		return specifications;
 	}
+
+	public List<Hypothesis> getHypotheses () {
+		return null;
+	}
 }
