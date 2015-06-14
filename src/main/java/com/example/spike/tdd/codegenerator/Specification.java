@@ -145,4 +145,7 @@ class Specification {
 				'}';
 	}
 
+	public Hypothesis getHypothesis () {
+		return null;
+	}
 }

@@ -6,6 +6,8 @@ import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertThat;
 
@@ -72,6 +74,12 @@ public class SpecificationShould {
 	public void generate_the_formal_parameters () {
 
 		MatcherAssert.assertThat(sut.getFormalParametersAsString(), Matchers.is("Integer x, Integer y"));
+	}
+
+	@Test
+	public void generate_the_spec_hypothesis () {
+
+		MatcherAssert.assertThat(sut.getHypothesis(), Matchers.is(new Hypothesis(Arrays.asList(2,2), 4)));
 	}
 
 	private Class is (final Class returnType) {
