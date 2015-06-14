@@ -1,6 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class HypothesisSet {
@@ -18,11 +19,11 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		Function candidateFunction = getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters);
+		Optional<Function> candidateFunction = Optional.of(getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters));
 
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
-				candidateFunction = (o) -> 0;
+				candidateFunction = getFunctionConstantResultForAllHypotheses(hypotheses);
 			}
 		}
 
@@ -32,11 +33,25 @@ public class HypothesisSet {
 			}
 		}
 
-		return candidateFunction;
+		return candidateFunction.get();
 	}
 
-	private boolean notMatchesHypothesis (final Function candidateFunction, final Hypothesis current) {
-		return !candidateFunction.apply(current.getParameters().get(0)).equals(current.getOutput());
+	private Optional<Function> getFunctionConstantResultForAllHypotheses (final List<Hypothesis> hypotheses) {
+		final Object first = hypotheses.get(0).getOutput();
+
+		for (Hypothesis current : hypotheses) {
+			if(!current.getOutput().equals(first)){
+				return Optional.empty();
+			}
+		}
+
+		final Function function =  (o) -> first;
+		return Optional.of(function);
+	}
+
+	private boolean notMatchesHypothesis (final Optional<Function> candidateFunction, final Hypothesis current) {
+		final boolean b = !candidateFunction.get().apply(current.getParameters().get(0)).equals(current.getOutput());
+		return !candidateFunction.isPresent() ||b;
 	}
 
 	private Function getFunctionBasedOnAddingDifference (final Hypothesis firstHypothesis, final List<Object> firstParameters) {
