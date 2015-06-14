@@ -34,4 +34,29 @@ public class TestReaderShould {
 				"is(4)")));
 	}
 
+	@Test
+	public void read_two_tests_in_the_same_file () throws IOException {
+
+		final Path path = get("src/test/resources/TwoAdditionsShould.java");
+		assertThat(path, is(not(nullValue())));
+
+		final List<String> strings = Files.readAllLines(path);
+		assertThat(strings.size(), is(not(0)));
+
+		final List<Specification> specs = new TestReader().read(path);
+
+		assertThat(specs, hasItems(
+
+				new Specification(
+					"add_two_numbers",
+					"sum(2, 2)",
+					"is(4)"),
+
+				new Specification(
+					"add_two_different_numbers",
+					"sum(1, 1)",
+					"is(2)")
+				));
+	}
+
 }
