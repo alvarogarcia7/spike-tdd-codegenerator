@@ -1,6 +1,5 @@
 package com.example.spike.tdd.codegenerator;
 
-import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.junit.Before;
@@ -37,19 +36,19 @@ public class SpecificationShould {
 	@Test
 	public void assert_on_the_production_method () {
 
-		MatcherAssert.assertThat(sut.getMethodName(), Matchers.is("sum"));
+		assertThat(sut.getMethodName(), Matchers.is("sum"));
 	}
 
 	@Test
 	public void assert_on_the_production_parameters () {
 
-		MatcherAssert.assertThat(sut.getHypothesis().getParameters(), hasItems(2, 2));
+		assertThat(sut.getHypothesis().getParameters(), hasItems(2, 2));
 	}
 
 	@Test
 	public void generate_the_production_method () {
 
-		MatcherAssert.assertThat(sut.getProductionMethod(), Matchers.is("public Integer sum(Integer x, Integer y){ " +
+		assertThat(sut.getProductionMethod(), Matchers.is("public Integer sum(Integer x, Integer y){ " +
 				"return 0; }"));
 	}
 
@@ -61,7 +60,7 @@ public class SpecificationShould {
 				"sum(2, 2,3,1,1,1,1,1,1,1,1,1,1,1,1)",
 				"");
 
-		MatcherAssert.assertThat(sut.getFormalParametersAsString(), Matchers.is(
+		assertThat(sut.getFormalParametersAsString(), Matchers.is(
 				"Integer x, Integer y, Integer z, Integer var3, Integer var4, Integer var5, Integer var6, Integer " +
 						"var7, " +
 						"Integer var8, " +
@@ -73,13 +72,13 @@ public class SpecificationShould {
 	@Test
 	public void generate_the_formal_parameters () {
 
-		MatcherAssert.assertThat(sut.getFormalParametersAsString(), Matchers.is("Integer x, Integer y"));
+		assertThat(sut.getFormalParametersAsString(), Matchers.is("Integer x, Integer y"));
 	}
 
 	@Test
 	public void generate_the_spec_hypothesis () {
 
-		MatcherAssert.assertThat(sut.getHypothesis(), Matchers.is(new Hypothesis(Arrays.asList(2,2), 4)));
+		assertThat(sut.getHypothesis(), Matchers.is(new Hypothesis(Arrays.asList(2,2), 4)));
 	}
 
 	private Class is (final Class returnType) {
