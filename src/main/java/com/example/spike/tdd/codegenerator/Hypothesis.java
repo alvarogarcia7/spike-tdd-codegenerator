@@ -1,6 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
 import java.util.List;
+import java.util.StringJoiner;
 
 public class Hypothesis {
 	private final List<Object> input;
@@ -29,6 +30,14 @@ public class Hypothesis {
 		int result = input != null ? input.hashCode() : 0;
 		result = 31 * result + (output != null ? output.hashCode() : 0);
 		return result;
+	}
+
+	@Override
+	public String toString () {
+		final StringJoiner stringJoiner = new StringJoiner(", ");
+		input.stream().forEach(current -> stringJoiner.add(String.valueOf(current)));
+		return "f(" + stringJoiner.toString() +
+				") = " + output;
 	}
 
 	public List<Object> getParameters () {
