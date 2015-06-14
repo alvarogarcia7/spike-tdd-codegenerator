@@ -21,6 +21,27 @@ public class HypothesisSetShould {
 		findFormulaAndAssertItsCorrectness(2, 3);
 	}
 
+	@Test
+	public void find_the_formula_with_several_hypotheses () {
+		//multiplying by zero
+		final int input1 = 1;
+		final int output1 = 0;
+		final int input2 = 2;
+		final int output2 = 0;
+
+
+		final Hypothesis hypothesis1 = new Hypothesis(Arrays.asList(input1), output1);
+		final Hypothesis hypothesis2 = new Hypothesis(Arrays.asList(input2), output2);
+		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
+		final HypothesisSet sut = new HypothesisSet(hypotheses);
+
+		final Function formula = (Function)sut.findFormula();
+
+		assertThat(formula.apply(input1), is(output1));
+		assertThat(formula.apply(input2), is(output2));
+
+	}
+
 	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
 		final List<Object> parameters = Arrays.asList(input);
 		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
