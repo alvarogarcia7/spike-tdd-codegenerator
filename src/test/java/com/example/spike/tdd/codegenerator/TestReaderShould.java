@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 
 import static java.nio.file.Paths.get;
 import static org.hamcrest.CoreMatchers.hasItems;
