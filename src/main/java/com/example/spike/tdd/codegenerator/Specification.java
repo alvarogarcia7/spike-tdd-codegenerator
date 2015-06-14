@@ -106,15 +106,21 @@ class Specification {
 		int i=0;
 		for (String parameterType : parameterTypes) {
 			String variableName;
-			try {
-				variableName = names[i];
-			} catch (ArrayIndexOutOfBoundsException e) {
-				variableName = "var" + i;
-			}
+			variableName = getVariableName(names, i);
 			parametersWithNames.add(parameterType + joiner + variableName);
 			i++;
 		}
 		return parametersWithNames;
+	}
+
+	private String getVariableName (final String[] names, final int i) {
+		String variableName;
+		try {
+			variableName = names[i];
+		} catch (ArrayIndexOutOfBoundsException e) {
+			variableName = "var" + i;
+		}
+		return variableName;
 	}
 
 	@Override
