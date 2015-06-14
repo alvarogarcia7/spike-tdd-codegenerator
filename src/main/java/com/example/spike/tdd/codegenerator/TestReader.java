@@ -17,11 +17,10 @@ public class TestReader {
 	public static final String LITERAL_PARENTHESIS_AND_BRACKET = "\\s*\\(\\)\\s*\\{";
 	private int currentLine;
 
-	public List<Specification> read (Path path){
+	public Hypotheses read (Path path){
 		try {
 			final List<String> lines = Files.readAllLines(path, Charset.defaultCharset());
-			List<Specification> tests = findTests(lines);
-			return tests;
+			return new Hypotheses(findTests(lines));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

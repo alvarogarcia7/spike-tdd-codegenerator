@@ -1,9 +1,16 @@
 package com.example.spike.tdd.codegenerator;
 
-public class Hypotheses {
-	private Object specifications;
+import java.util.List;
 
-	public Object getSpecifications () {
-		return null;
+public class Hypotheses {
+	private List<Specification> specifications;
+
+	public Hypotheses (final List<Specification> tests) {
+
+		specifications = tests;
+	}
+
+	public List<Specification> getSpecifications () {
+		return specifications;
 	}
 }
