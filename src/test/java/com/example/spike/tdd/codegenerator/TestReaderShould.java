@@ -17,9 +17,9 @@ public class TestReaderShould {
 
 		final Path path = javaSpecFromTestResource("Addition");
 
-		final List<Specification> specs = new TestReader().read(path);
+		Hypotheses specs = new TestReader().read(path);
 
-		assertThat(specs, hasItems(new Specification(
+		assertThat(specs.getSpecifications(), hasItems(new Specification(
 				"add_two_numbers",
 				"sum(2, 2)",
 				"is(4)")));
@@ -30,9 +30,9 @@ public class TestReaderShould {
 
 		final Path path = javaSpecFromTestResource("TwoAdditions");
 
-		final List<Specification> specs = new TestReader().read(path);
+		Hypotheses specs = new TestReader().read(path);
 
-		assertThat(specs, hasItems(
+		assertThat(specs.getSpecifications(), hasItems(
 
 				new Specification(
 					"add_two_numbers",
