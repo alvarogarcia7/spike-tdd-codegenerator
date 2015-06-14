@@ -75,6 +75,10 @@ class Specification {
 		return joinParameters(parametersWithNames);
 	}
 
+	public Hypothesis getHypothesis () {
+		return new Hypothesis(getParameters(), getReturnValue());
+	}
+
 	private String joinParameters (final List<String> parametersWithNames) {
 		StringJoiner stringJoiner = new StringJoiner(", ");
 		parametersWithNames.forEach(stringJoiner::add);
@@ -145,7 +149,4 @@ class Specification {
 				'}';
 	}
 
-	public Hypothesis getHypothesis () {
-		return new Hypothesis(getParameters(), getReturnValue());
-	}
 }
