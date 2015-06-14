@@ -3,7 +3,6 @@ package com.example.spike.tdd.codegenerator;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
@@ -18,8 +17,6 @@ public class TestReaderShould {
 
 		final Path path = get("src/test/resources/AdditionShould.java");
 
-		final List<String> strings = Files.readAllLines(path);
-
 		final List<Specification> specs = new TestReader().read(path);
 
 		assertThat(specs, hasItems(new Specification(
@@ -32,8 +29,6 @@ public class TestReaderShould {
 	public void read_two_tests_in_the_same_file () throws IOException {
 
 		final Path path = get("src/test/resources/TwoAdditionsShould.java");
-
-		final List<String> strings = Files.readAllLines(path);
 
 		final List<Specification> specs = new TestReader().read(path);
 
