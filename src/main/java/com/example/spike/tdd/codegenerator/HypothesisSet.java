@@ -19,7 +19,7 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		Optional<Function> candidateFunction = Optional.of(getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters));
+		Optional<Function> candidateFunction = getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters);
 
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
@@ -54,12 +54,14 @@ public class HypothesisSet {
 		return !candidateFunction.isPresent() ||b;
 	}
 
-	private Function getFunctionBasedOnAddingDifference (final Hypothesis firstHypothesis, final List<Object> firstParameters) {
+	private Optional<Function> getFunctionBasedOnAddingDifference (final Hypothesis firstHypothesis, final List<Object>
+			firstParameters) {
 		final int input = (int)firstParameters.get(0);
 		final int output = (int) firstHypothesis.getOutput();
 
 		final int increment = output - input;
 
-		return (o) -> (int) o + increment;
+		final Function function = (o) -> (int) o + increment;
+		return Optional.of(function);
 	}
 }
