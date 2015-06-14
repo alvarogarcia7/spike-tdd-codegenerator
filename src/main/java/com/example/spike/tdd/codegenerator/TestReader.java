@@ -31,18 +31,39 @@ public class TestReader {
 	private List<Specification> findTests (final List<String> lines) {
 
 		final List<String> trimmedLines = trimAndDeleteEmptyLines(lines);
+		final List<Specification> tests = new ArrayList<>();
 
-		currentLine = trimmedLines.indexOf(TEST_ANNOTATION);
+
+		while(isSpecificationAvailable(trimmedLines)) {
+			final Specification specification = getSpecification(trimmedLines);
+			tests.add(specification);
+		}
+
+		return tests;
+	}
+
+	private boolean isSpecificationAvailable (final List<String> trimmedLines) {
+
+		int i;
+		for(i=this.currentLine; i<trimmedLines.size(); i++){
+			final String currentLine = trimmedLines.get(i);
+			if(TEST_ANNOTATION.equals(currentLine)){
+				this.currentLine = i;
+				return true;
+			}
+		}
+		this.currentLine = i - 1;
+		return false;
+	}
+
+	private Specification getSpecification (final List<String> trimmedLines) {
 		skip("test_annotation");
 		final String methodHeader = getSpecHeader(trimmedLines);
 		skip("assert");
 
 		final String productionCode = getProductionCode(trimmedLines);
 		final String testCode = getTestCode(trimmedLines);
-
-		final List<Specification> tests = new ArrayList<>();
-		tests.add(new Specification(methodHeader, productionCode, testCode));
-		return tests;
+		return new Specification(methodHeader, productionCode, testCode);
 	}
 
 	private String getTestCode (final List<String> trimmedLines) {
