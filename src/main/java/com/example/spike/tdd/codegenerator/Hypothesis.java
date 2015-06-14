@@ -30,4 +30,8 @@ public class Hypothesis {
 		result = 31 * result + (output != null ? output.hashCode() : 0);
 		return result;
 	}
+
+	public List<Object> getParameters () {
+		return input;
+	}
 }

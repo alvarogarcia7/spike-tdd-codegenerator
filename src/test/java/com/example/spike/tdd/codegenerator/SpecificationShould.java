@@ -43,7 +43,7 @@ public class SpecificationShould {
 	@Test
 	public void assert_on_the_production_parameters () {
 
-		MatcherAssert.assertThat(sut.getParameters(), hasItems(2, 2));
+		MatcherAssert.assertThat(sut.getHypothesis().getParameters(), hasItems(2, 2));
 	}
 
 	@Test
