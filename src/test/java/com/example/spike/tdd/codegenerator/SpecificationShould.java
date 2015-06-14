@@ -25,7 +25,7 @@ public class SpecificationShould {
 
 	@Test
 	public void detect_the_return_type_as_integer () {
-		assertThatClassAssignableFrom(sut.getReturnType(), is(Integer.class));
+		assertThatClassAssignableFrom(sut.getReturnType(), isClass(Integer.class));
 	}
 
 	@Test
@@ -78,10 +78,10 @@ public class SpecificationShould {
 	@Test
 	public void generate_the_spec_hypothesis () {
 
-		assertThat(sut.getHypothesis(), Matchers.is(new Hypothesis(Arrays.asList(2,2), 4)));
+		assertThat(sut.getHypothesis(), Matchers.is(new Hypothesis(Arrays.asList(2, 2), 4)));
 	}
 
-	private Class is (final Class returnType) {
+	private Class isClass (final Class returnType) {
 		return returnType;
 	}
 
