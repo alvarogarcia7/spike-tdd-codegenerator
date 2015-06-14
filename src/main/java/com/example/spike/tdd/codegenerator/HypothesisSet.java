@@ -21,18 +21,22 @@ public class HypothesisSet {
 		Function candidateFunction = getFunctionBasedOnAddingDifference(firstHypothesis, firstParameters);
 
 		for (Hypothesis current : hypotheses) {
-			if (!candidateFunction.apply(current.getParameters().get(0)).equals(current.getOutput())) {
+			if (notMatchesHypothesis(candidateFunction, current)) {
 				candidateFunction = (o) -> 0;
 			}
 		}
 
 		for (Hypothesis current : hypotheses) {
-			if (!candidateFunction.apply(current.getParameters().get(0)).equals(current.getOutput())) {
+			if (notMatchesHypothesis(candidateFunction, current)) {
 				throw new UnsupportedOperationException("Not yet ready");
 			}
 		}
 
 		return candidateFunction;
+	}
+
+	private boolean notMatchesHypothesis (final Function candidateFunction, final Hypothesis current) {
+		return !candidateFunction.apply(current.getParameters().get(0)).equals(current.getOutput());
 	}
 
 	private Function getFunctionBasedOnAddingDifference (final Hypothesis firstHypothesis, final List<Object> firstParameters) {
