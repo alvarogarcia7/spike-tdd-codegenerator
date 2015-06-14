@@ -21,4 +21,13 @@ public class HypothesisSetShould {
 		assertThat(((Function) formula).apply(1), is(1));
 	}
 
+	@Test
+	public void find_the_successor () {
+		sut = new HypothesisSet(Arrays.asList(new Hypothesis(Arrays.asList(2), 3)));
+
+		final Object formula = sut.findFormula();
+
+		assertThat(((Function) formula).apply(1), is(2));
+	}
+
 }
