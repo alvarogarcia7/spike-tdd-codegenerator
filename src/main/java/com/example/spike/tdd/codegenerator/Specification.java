@@ -146,6 +146,6 @@ class Specification {
 	}
 
 	public Hypothesis getHypothesis () {
-		return null;
+		return new Hypothesis(getParameters(), getReturnValue());
 	}
 }
