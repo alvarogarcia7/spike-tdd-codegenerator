@@ -3,6 +3,7 @@ package com.example.spike.tdd.codegenerator;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -23,11 +24,13 @@ public class HypothesisSetShould {
 	}
 
 	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
-		sut = new HypothesisSet(Arrays.asList(new Hypothesis(Arrays.asList(input), output)));
+		final List<Object> parameters = Arrays.asList(input);
+		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
+		sut = new HypothesisSet(hypotheses);
 
-		final Object formula = sut.findFormula();
+		final Function formula = (Function)sut.findFormula();
 
-		assertThat(((Function) formula).apply(input), is(output));
+		assertThat(formula.apply(input), is(output));
 	}
 
 }
