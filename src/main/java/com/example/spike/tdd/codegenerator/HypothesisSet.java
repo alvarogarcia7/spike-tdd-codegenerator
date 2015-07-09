@@ -8,6 +8,8 @@ public class HypothesisSet {
 
 	private Difference difference = new Difference();
 
+	private Division division = new Division();
+
 	private final List<Hypothesis> hypotheses;
 
 	public HypothesisSet (final List<Hypothesis> hypotheses) {
@@ -31,7 +33,7 @@ public class HypothesisSet {
 
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
-				candidateFunction = getFunctionDivision(hypotheses);
+				candidateFunction = division.find(hypotheses);
 			}
 		}
 
@@ -45,14 +47,6 @@ public class HypothesisSet {
 		return candidateFunction.get();
 	}
 
-
-	private Optional<Function> getFunctionDivision (final List<Hypothesis> hypotheses) {
-		final int a = (int) hypotheses.get(0).getParameters().get(0);
-		final int b = (int) hypotheses.get(0).getOutput();
-		final int divisor = a / b;
-		Function f = (x) -> (int) x / divisor;
-		return Optional.of(f);
-	}
 
 	private Optional<Function> getFunctionConstantResultForAllHypotheses (final List<Hypothesis> hypotheses) {
 		final Object first = hypotheses.get(0).getOutput();
