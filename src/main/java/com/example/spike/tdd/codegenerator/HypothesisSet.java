@@ -27,26 +27,39 @@ public class HypothesisSet {
 
 		Optional<Function> candidateFunction = difference.find(hypotheses);
 
-		for (Hypothesis current : hypotheses) {
-			if (notMatchesHypothesis(candidateFunction, current)) {
-				candidateFunction = constantResult.find(hypotheses);
-			}
-		}
+		candidateFunction = next1(candidateFunction);
 
-		for (Hypothesis current : hypotheses) {
-			if (notMatchesHypothesis(candidateFunction, current)) {
-				candidateFunction = division.find(hypotheses);
-			}
-		}
+		candidateFunction = next2(candidateFunction);
 
+		fail(candidateFunction);
 
+		return candidateFunction.get();
+	}
+
+	private void fail (final Optional<Function> candidateFunction) {
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
 				throw new UnsupportedOperationException("Not yet ready");
 			}
 		}
+	}
 
-		return candidateFunction.get();
+	private Optional<Function> next2 (Optional<Function> candidateFunction) {
+		for (Hypothesis current : hypotheses) {
+			if (notMatchesHypothesis(candidateFunction, current)) {
+				candidateFunction = division.find(hypotheses);
+			}
+		}
+		return candidateFunction;
+	}
+
+	private Optional<Function> next1 (Optional<Function> candidateFunction) {
+		for (Hypothesis current : hypotheses) {
+			if (notMatchesHypothesis(candidateFunction, current)) {
+				candidateFunction = constantResult.find(hypotheses);
+			}
+		}
+		return candidateFunction;
 	}
 
 
