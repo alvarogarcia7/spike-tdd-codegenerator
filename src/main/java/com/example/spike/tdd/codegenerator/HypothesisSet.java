@@ -10,6 +10,8 @@ public class HypothesisSet {
 
 	private Division division = new Division();
 
+	private ConstantResult constantResult = new ConstantResult();
+
 	private final List<Hypothesis> hypotheses;
 
 	public HypothesisSet (final List<Hypothesis> hypotheses) {
@@ -27,7 +29,7 @@ public class HypothesisSet {
 
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
-				candidateFunction = getFunctionConstantResultForAllHypotheses(hypotheses);
+				candidateFunction = constantResult.find(hypotheses);
 			}
 		}
 
@@ -47,19 +49,6 @@ public class HypothesisSet {
 		return candidateFunction.get();
 	}
 
-
-	private Optional<Function> getFunctionConstantResultForAllHypotheses (final List<Hypothesis> hypotheses) {
-		final Object first = hypotheses.get(0).getOutput();
-
-		for (Hypothesis current : hypotheses) {
-			if(!current.getOutput().equals(first)){
-				return Optional.empty();
-			}
-		}
-
-		final Function function =  (o) -> first;
-		return Optional.of(function);
-	}
 
 	private boolean notMatchesHypothesis (final Optional<Function> candidateFunction, final Hypothesis current) {
 		return !candidateFunction.isPresent() || !candidateFunction.get().apply(current.getParameters().get(0)).equals(current.getOutput());
