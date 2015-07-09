@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class ConstantResult {
-	
+
 	public Optional<Function> find (final List<Hypothesis> hypotheses) {
 		final Object first = hypotheses.get(0).getOutput();
 
