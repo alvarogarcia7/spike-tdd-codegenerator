@@ -50,7 +50,7 @@ public class HypothesisSetShould {
 		final int input2 = 2;
 		final int output2 = 1;
 
- 
+
 		final Hypothesis hypothesis1 = new Hypothesis(Arrays.asList(input1), output1);
 		final Hypothesis hypothesis2 = new Hypothesis(Arrays.asList(input2), output2);
 		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);

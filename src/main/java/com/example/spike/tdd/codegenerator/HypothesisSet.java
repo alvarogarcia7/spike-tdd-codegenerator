@@ -29,11 +29,26 @@ public class HypothesisSet {
 
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
+				candidateFunction = getFunctionDivision(hypotheses);
+			}
+		}
+
+
+		for (Hypothesis current : hypotheses) {
+			if (notMatchesHypothesis(candidateFunction, current)) {
 				throw new UnsupportedOperationException("Not yet ready");
 			}
 		}
 
 		return candidateFunction.get();
+	}
+
+	private Optional<Function> getFunctionDivision (final List<Hypothesis> hypotheses) {
+		final int a = (int) hypotheses.get(0).getParameters().get(0);
+		final int b = (int) hypotheses.get(0).getOutput();
+		final int divisor = a / b;
+		Function f = (x) -> (int) x / divisor;
+		return Optional.of(f);
 	}
 
 	private Optional<Function> getFunctionConstantResultForAllHypotheses (final List<Hypothesis> hypotheses) {
@@ -50,8 +65,7 @@ public class HypothesisSet {
 	}
 
 	private boolean notMatchesHypothesis (final Optional<Function> candidateFunction, final Hypothesis current) {
-		final boolean b = !candidateFunction.get().apply(current.getParameters().get(0)).equals(current.getOutput());
-		return !candidateFunction.isPresent() ||b;
+		return !candidateFunction.isPresent() || !candidateFunction.get().apply(current.getParameters().get(0)).equals(current.getOutput());
 	}
 
 	private Optional<Function> getFunctionBasedOnAddingDifference (final Hypothesis firstHypothesis, final List<Object>
