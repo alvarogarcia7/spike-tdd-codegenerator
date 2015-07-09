@@ -30,7 +30,7 @@ public class HypothesisSet {
 
 		candidateFunction = next1(candidateFunction, () -> constantResult.find(hypotheses));
 
-		candidateFunction = next2(candidateFunction);
+		candidateFunction = next1(candidateFunction, () -> division.find(hypotheses));
 
 		fail(candidateFunction);
 
@@ -43,15 +43,6 @@ public class HypothesisSet {
 				throw new UnsupportedOperationException("Not yet ready");
 			}
 		}
-	}
-
-	private Optional<Function> next2 (Optional<Function> candidateFunction) {
-		for (Hypothesis current : hypotheses) {
-			if (notMatchesHypothesis(candidateFunction, current)) {
-				candidateFunction = division.find(hypotheses);
-			}
-		}
-		return candidateFunction;
 	}
 
 	private Optional<Function> next1 (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable)
