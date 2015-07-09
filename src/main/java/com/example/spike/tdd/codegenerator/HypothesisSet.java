@@ -1,5 +1,6 @@
 package com.example.spike.tdd.codegenerator;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.Callable;
@@ -26,11 +27,12 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		Optional<Function> candidateFunction = difference.find(hypotheses);
+		final List<FunctionFinder> functionFinders = Arrays.asList(difference, division, constantResult);
 
-		candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> constantResult.find(hypotheses));
-
-		candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> division.find(hypotheses));
+		Optional<Function> candidateFunction = Optional.empty();
+		for (FunctionFinder functionFinder : functionFinders) {
+			candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> functionFinder.find(hypotheses));
+		}
 
 		verifyHypothesesOrDo(candidateFunction, () -> {
 			throw new UnsupportedOperationException("Not yet ready");
