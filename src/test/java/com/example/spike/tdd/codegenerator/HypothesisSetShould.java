@@ -42,6 +42,27 @@ public class HypothesisSetShould {
 
 	}
 
+	@Test
+	public void find_the_division_by_two_formula () {
+		//dividing by two
+		final int input1 = 4;
+		final int output1 = 2;
+		final int input2 = 2;
+		final int output2 = 1;
+
+ 
+		final Hypothesis hypothesis1 = new Hypothesis(Arrays.asList(input1), output1);
+		final Hypothesis hypothesis2 = new Hypothesis(Arrays.asList(input2), output2);
+		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
+		final HypothesisSet sut = new HypothesisSet(hypotheses);
+
+		final Function formula = (Function)sut.findFormula();
+
+		assertThat(formula.apply(input1), is(output1));
+		assertThat(formula.apply(input2), is(output2));
+
+	}
+
 	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
 		final List<Object> parameters = Arrays.asList(input);
 		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
