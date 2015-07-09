@@ -43,8 +43,8 @@ public class HypothesisSetShould {
 	}
 
 	@Test
-	public void find_the_division_by_two_formula () {
-		//dividing by two
+	public void find_the_division_by_the_output_is_the_output () {
+		//this is not the division by two nor the square (or its inverse) operation
 		final int input1 = 4;
 		final int output1 = 2;
 		final int input2 = 2;
