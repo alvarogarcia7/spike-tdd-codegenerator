@@ -39,12 +39,11 @@ public class HypothesisSet {
 		return candidateFunction.get();
 	}
 
-	private Optional<Function> verifyHypothesesOrDo (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable)
-			{
+	private Optional<Function> verifyHypothesesOrDo (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable) {
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
 				try {
-					candidateFunction = runnable.call();
+					return runnable.call();
 				} catch (Exception e) {
 					return Optional.empty();
 				}
