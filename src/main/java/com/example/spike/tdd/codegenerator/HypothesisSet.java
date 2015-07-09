@@ -6,6 +6,8 @@ import java.util.function.Function;
 
 public class HypothesisSet {
 
+	private Difference difference = new Difference();
+
 	private final List<Hypothesis> hypotheses;
 
 	public HypothesisSet (final List<Hypothesis> hypotheses) {
@@ -19,7 +21,7 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		Optional<Function> candidateFunction = getFunctionBasedOnAddingDifference(hypotheses);
+		Optional<Function> candidateFunction = difference.find(hypotheses);
 
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
@@ -69,13 +71,4 @@ public class HypothesisSet {
 		return !candidateFunction.isPresent() || !candidateFunction.get().apply(current.getParameters().get(0)).equals(current.getOutput());
 	}
 
-	private Optional<Function> getFunctionBasedOnAddingDifference (List<Hypothesis> hypotheses) {
-		final int input = (int)hypotheses.get(0).getParameters().get(0);
-		final int output = (int) hypotheses.get(0).getOutput();
-
-		final int increment = output - input;
-
-		final Function function = (o) -> (int) o + increment;
-		return Optional.of(function);
-	}
 }
