@@ -32,17 +32,11 @@ public class HypothesisSet {
 
 		candidateFunction = next1(candidateFunction, () -> division.find(hypotheses));
 
-		fail(candidateFunction);
+		next1(candidateFunction, () -> {
+			throw new UnsupportedOperationException("Not yet ready");
+		});
 
 		return candidateFunction.get();
-	}
-
-	private void fail (final Optional<Function> candidateFunction) {
-		for (Hypothesis current : hypotheses) {
-			if (notMatchesHypothesis(candidateFunction, current)) {
-				throw new UnsupportedOperationException("Not yet ready");
-			}
-		}
 	}
 
 	private Optional<Function> next1 (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable)
