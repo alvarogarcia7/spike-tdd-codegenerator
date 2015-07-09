@@ -28,18 +28,18 @@ public class HypothesisSet {
 
 		Optional<Function> candidateFunction = difference.find(hypotheses);
 
-		candidateFunction = next1(candidateFunction, () -> constantResult.find(hypotheses));
+		candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> constantResult.find(hypotheses));
 
-		candidateFunction = next1(candidateFunction, () -> division.find(hypotheses));
+		candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> division.find(hypotheses));
 
-		next1(candidateFunction, () -> {
+		verifyHypothesesOrDo(candidateFunction, () -> {
 			throw new UnsupportedOperationException("Not yet ready");
 		});
 
 		return candidateFunction.get();
 	}
 
-	private Optional<Function> next1 (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable)
+	private Optional<Function> verifyHypothesesOrDo (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable)
 			{
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
