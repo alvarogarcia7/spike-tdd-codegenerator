@@ -2,6 +2,7 @@ package com.example.spike.tdd.codegenerator;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 
 public class HypothesisSet {
@@ -27,7 +28,7 @@ public class HypothesisSet {
 
 		Optional<Function> candidateFunction = difference.find(hypotheses);
 
-		candidateFunction = next1(candidateFunction);
+		candidateFunction = next1(candidateFunction, () -> constantResult.find(hypotheses));
 
 		candidateFunction = next2(candidateFunction);
 
@@ -53,10 +54,15 @@ public class HypothesisSet {
 		return candidateFunction;
 	}
 
-	private Optional<Function> next1 (Optional<Function> candidateFunction) {
+	private Optional<Function> next1 (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable)
+			{
 		for (Hypothesis current : hypotheses) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
-				candidateFunction = constantResult.find(hypotheses);
+				try {
+					candidateFunction = runnable.call();
+				} catch (Exception e) {
+					return Optional.empty();
+				}
 			}
 		}
 		return candidateFunction;
