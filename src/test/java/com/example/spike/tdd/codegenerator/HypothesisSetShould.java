@@ -35,7 +35,7 @@ public class HypothesisSetShould {
 		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
 		final HypothesisSet sut = new HypothesisSet(hypotheses);
 
-		final Function formula = (Function)sut.findFormula();
+		final Function formula = sut.findFormula();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
@@ -56,7 +56,7 @@ public class HypothesisSetShould {
 		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
 		final HypothesisSet sut = new HypothesisSet(hypotheses);
 
-		final Function formula = (Function)sut.findFormula();
+		final Function formula = sut.findFormula();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
@@ -68,7 +68,7 @@ public class HypothesisSetShould {
 		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
 		final HypothesisSet sut = new HypothesisSet(hypotheses);
 
-		final Function formula = (Function)sut.findFormula();
+		final Function formula = sut.findFormula();
 
 		assertThat(formula.apply(input), is(output));
 	}

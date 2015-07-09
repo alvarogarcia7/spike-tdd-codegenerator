@@ -20,7 +20,7 @@ public class HypothesisSet {
 		this.hypotheses = hypotheses;
 	}
 
-	public Object findFormula () {
+	public Function findFormula () {
 
 		final Hypothesis firstHypothesis = hypotheses.get(0);
 		final List<Object> firstParameters = firstHypothesis.getParameters();
