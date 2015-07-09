@@ -11,6 +11,10 @@ public class Division implements FunctionFinder{
 		final int b = (int) hypotheses.get(0).getOutput();
 		if(b == 0){
 			return Optional.empty();
+		} else {
+			if(hypotheses.stream().filter(x -> x.getOutput().equals(0)).findAny().isPresent()){
+				return Optional.empty();
+			}
 		}
 		final int divisor = a / b;
 		Function f = (x) -> (int) x / divisor;
