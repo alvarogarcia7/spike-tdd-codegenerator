@@ -1,6 +1,8 @@
 package com.example.spike.tdd.codegenerator;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -71,6 +73,23 @@ public class HypothesisSetShould {
 		final Function formula = sut.findFormula();
 
 		assertThat(formula.apply(input), is(output));
+	}
+
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+
+	@Test
+	public void throw_an_exception_when_a_formula_is_not_found(){
+		final Hypothesis hypothesis1 = new Hypothesis(Arrays.asList(1), 1);
+		final Hypothesis hypothesis2 = new Hypothesis(Arrays.asList(1), 2);
+		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
+		final HypothesisSet sut = new HypothesisSet(hypotheses);
+
+		expectedException.expect(UnsupportedOperationException.class);
+		expectedException.expectMessage(is("Not yet ready"));
+
+		 sut.findFormula();
+
 	}
 
 }
