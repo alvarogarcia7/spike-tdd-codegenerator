@@ -13,6 +13,9 @@ import static org.hamcrest.Matchers.is;
 
 public class HypothesisSetShould {
 
+	@Rule
+	public ExpectedException expectedException = ExpectedException.none();
+
 	@Test
 	public void find_the_identity () {
 		findFormulaAndAssertItsCorrectness(2, 2);
@@ -64,9 +67,6 @@ public class HypothesisSetShould {
 		assertThat(formula.apply(input2), is(output2));
 
 	}
-
-	@Rule
-	public ExpectedException expectedException = ExpectedException.none();
 
 	@Test
 	public void throw_an_exception_when_a_formula_is_not_found(){
