@@ -4,10 +4,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import static com.example.spike.tdd.codegenerator.HypothesisBuilder.hypothesis;
+import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -34,11 +35,8 @@ public class HypothesisSetShould {
 		final int input2 = 2;
 		final int output2 = 0;
 
-
-		final Hypothesis hypothesis1 = new Hypothesis(Arrays.asList(input1), output1);
-		final Hypothesis hypothesis2 = new Hypothesis(Arrays.asList(input2), output2);
-		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
-		final HypothesisSet sut = new HypothesisSet(hypotheses);
+		final HypothesisSet sut = new HypothesisSet(asList(hypothesis(output1, input1),
+				hypothesis(output2, input2)));
 
 		final Function formula = sut.findFormula();
 
@@ -56,9 +54,9 @@ public class HypothesisSetShould {
 		final int output2 = 1;
 
 
-		final Hypothesis hypothesis1 = new Hypothesis(Arrays.asList(input1), output1);
-		final Hypothesis hypothesis2 = new Hypothesis(Arrays.asList(input2), output2);
-		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
+		final Hypothesis hypothesis1 = new Hypothesis(asList(input1), output1);
+		final Hypothesis hypothesis2 = new Hypothesis(asList(input2), output2);
+		final List<Hypothesis> hypotheses = asList(hypothesis1, hypothesis2);
 		final HypothesisSet sut = new HypothesisSet(hypotheses);
 
 		final Function formula = sut.findFormula();
@@ -70,9 +68,9 @@ public class HypothesisSetShould {
 
 	@Test
 	public void throw_an_exception_when_a_formula_is_not_found(){
-		final Hypothesis hypothesis1 = new Hypothesis(Arrays.asList(1), 1);
-		final Hypothesis hypothesis2 = new Hypothesis(Arrays.asList(1), 2);
-		final List<Hypothesis> hypotheses = Arrays.asList(hypothesis1, hypothesis2);
+		final Hypothesis hypothesis1 = new Hypothesis(asList(1), 1);
+		final Hypothesis hypothesis2 = new Hypothesis(asList(1), 2);
+		final List<Hypothesis> hypotheses = asList(hypothesis1, hypothesis2);
 		final HypothesisSet sut = new HypothesisSet(hypotheses);
 
 		expectedException.expect(UnsupportedOperationException.class);
@@ -82,8 +80,8 @@ public class HypothesisSetShould {
 	}
 
 	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
-		final List<Object> parameters = Arrays.asList(input);
-		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
+		final List<Object> parameters = asList(input);
+		final List<Hypothesis> hypotheses = asList(new Hypothesis(parameters, output));
 		final HypothesisSet sut = new HypothesisSet(hypotheses);
 
 		final Function formula = sut.findFormula();
