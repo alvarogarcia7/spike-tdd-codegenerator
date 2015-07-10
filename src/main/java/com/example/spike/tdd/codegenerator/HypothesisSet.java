@@ -28,10 +28,10 @@ public class HypothesisSet {
 			candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> functionFinder.find(hypotheses));
 		}
 
-		if (!candidateFunction.isPresent()) {
-			throw new UnsupportedOperationException("Not yet ready");
-		} else {
+		if (candidateFunction.isPresent()) {
 			return candidateFunction.get();
+		} else {
+			throw new UnsupportedOperationException("Not yet ready");
 		}
 
 	}
