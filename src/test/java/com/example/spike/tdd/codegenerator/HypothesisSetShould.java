@@ -65,16 +65,6 @@ public class HypothesisSetShould {
 
 	}
 
-	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
-		final List<Object> parameters = Arrays.asList(input);
-		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
-		final HypothesisSet sut = new HypothesisSet(hypotheses);
-
-		final Function formula = sut.findFormula();
-
-		assertThat(formula.apply(input), is(output));
-	}
-
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
 
@@ -89,6 +79,16 @@ public class HypothesisSetShould {
 		expectedException.expectMessage(is("Not yet ready"));
 
 		sut.findFormula();
+	}
+
+	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
+		final List<Object> parameters = Arrays.asList(input);
+		final List<Hypothesis> hypotheses = Arrays.asList(new Hypothesis(parameters, output));
+		final HypothesisSet sut = new HypothesisSet(hypotheses);
+
+		final Function formula = sut.findFormula();
+
+		assertThat(formula.apply(input), is(output));
 	}
 
 }
