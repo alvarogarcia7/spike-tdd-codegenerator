@@ -54,10 +54,8 @@ public class HypothesisSetShould {
 		final int output2 = 1;
 
 
-		final Hypothesis hypothesis1 = new Hypothesis(asList(input1), output1);
-		final Hypothesis hypothesis2 = new Hypothesis(asList(input2), output2);
-		final List<Hypothesis> hypotheses = asList(hypothesis1, hypothesis2);
-		final HypothesisSet sut = new HypothesisSet(hypotheses);
+		final HypothesisSet sut = new HypothesisSet(asList(hypothesis(output1, input1),
+				hypothesis(output2, input2)));
 
 		final Function formula = sut.findFormula();
 
