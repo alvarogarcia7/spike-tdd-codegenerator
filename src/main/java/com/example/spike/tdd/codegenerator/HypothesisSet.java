@@ -8,12 +8,6 @@ import java.util.function.Function;
 
 public class HypothesisSet {
 
-	private Difference difference = new Difference();
-
-	private Division division = new Division();
-
-	private ConstantResult constantResult = new ConstantResult();
-
 	private final List<Hypothesis> hypotheses;
 
 	public HypothesisSet (final List<Hypothesis> hypotheses) {
@@ -27,7 +21,7 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		final List<FunctionFinder> functionFinders = Arrays.asList(difference, division, constantResult);
+		final List<FunctionFinder> functionFinders = Arrays.asList(new Difference(), new Division(), new ConstantResult());
 
 		Optional<Function> candidateFunction = Optional.empty();
 		for (FunctionFinder functionFinder : functionFinders) {
