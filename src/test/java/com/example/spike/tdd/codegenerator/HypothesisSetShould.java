@@ -88,8 +88,7 @@ public class HypothesisSetShould {
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
 
-		 sut.findFormula();
-
+		sut.findFormula();
 	}
 
 }
