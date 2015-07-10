@@ -19,12 +19,23 @@ public class HypothesisSetShould {
 
 	@Test
 	public void find_the_identity () {
-		findFormulaAndAssertItsCorrectness(2, 2);
+		final int anyNumber = 2;
+		final HypothesisSet sut = sutWith(anyNumber, anyNumber);
+
+		final Function formula = sut.findFormula();
+
+		assertThat(formula.apply(anyNumber), is(anyNumber));
 	}
 
 	@Test
 	public void find_the_successor () {
-		findFormulaAndAssertItsCorrectness(2, 3);
+		final int input = 2;
+		final int output = 3;
+		final HypothesisSet sut = sutWith(input, output);
+
+		final Function formula = sut.findFormula();
+
+		assertThat(formula.apply(input), is(output));
 	}
 
 	@Test
@@ -79,14 +90,10 @@ public class HypothesisSetShould {
 		sut.findFormula();
 	}
 
-	private void findFormulaAndAssertItsCorrectness (final int input, final int output) {
+	private HypothesisSet sutWith (final int input, final int output) {
 		final List<Object> parameters = asList(input);
 		final List<Hypothesis> hypotheses = asList(new Hypothesis(parameters, output));
-		final HypothesisSet sut = new HypothesisSet(hypotheses);
-
-		final Function formula = sut.findFormula();
-
-		assertThat(formula.apply(input), is(output));
+		return new HypothesisSet(hypotheses);
 	}
 
 }
