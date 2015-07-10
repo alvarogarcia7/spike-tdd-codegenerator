@@ -4,7 +4,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import java.util.List;
 import java.util.function.Function;
 
 import static com.example.spike.tdd.codegenerator.HypothesisBuilder.hypothesis;
@@ -91,9 +90,9 @@ public class HypothesisSetShould {
 	}
 
 	private HypothesisSet sutWith (final int input, final int output) {
-		final List<Object> parameters = asList(input);
-		final List<Hypothesis> hypotheses = asList(new Hypothesis(parameters, output));
-		return new HypothesisSet(hypotheses);
+		return new HypothesisSet(
+				asList(
+						hypothesis(output, input)));
 	}
 
 }
