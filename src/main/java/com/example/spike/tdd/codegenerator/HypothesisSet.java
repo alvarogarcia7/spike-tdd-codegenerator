@@ -34,11 +34,12 @@ public class HypothesisSet {
 			candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> functionFinder.find(hypotheses));
 		}
 
-		verifyHypothesesOrDo(candidateFunction, () -> {
+		if (!candidateFunction.isPresent()) {
 			throw new UnsupportedOperationException("Not yet ready");
-		});
+		} else {
+			return candidateFunction.get();
+		}
 
-		return candidateFunction.get();
 	}
 
 	private Optional<Function> verifyHypothesesOrDo (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable) {
