@@ -35,14 +35,18 @@ public class HypothesisSetShould {
 		final int input2 = 2;
 		final int output2 = 0;
 
-		final HypothesisSet sut = new HypothesisSet(asList(hypothesis(output1, input1),
-				hypothesis(output2, input2)));
+		final HypothesisSet sut = sutWith(input1, output1, input2, output2);
 
 		final Function formula = sut.findFormula();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
 
+	}
+
+	private HypothesisSet sutWith (final int input1, final int output1, final int input2, final int output2) {
+		return new HypothesisSet(asList(hypothesis(output1, input1),
+					hypothesis(output2, input2)));
 	}
 
 	@Test
@@ -54,8 +58,7 @@ public class HypothesisSetShould {
 		final int output2 = 1;
 
 
-		final HypothesisSet sut = new HypothesisSet(asList(hypothesis(output1, input1),
-				hypothesis(output2, input2)));
+		final HypothesisSet sut = sutWith(input1, output1, input2, output2);
 
 		final Function formula = sut.findFormula();
 
@@ -66,8 +69,7 @@ public class HypothesisSetShould {
 
 	@Test
 	public void throw_an_exception_when_a_formula_is_not_found(){
-		final HypothesisSet sut = new HypothesisSet(asList(hypothesis(1, 1),
-				hypothesis(2, 1)));
+		final HypothesisSet sut = sutWith(1, 1, 1, 2);
 
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
