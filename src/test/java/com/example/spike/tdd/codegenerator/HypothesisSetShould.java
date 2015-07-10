@@ -45,8 +45,10 @@ public class HypothesisSetShould {
 	}
 
 	private HypothesisSet sutWith (final int input1, final int output1, final int input2, final int output2) {
-		return new HypothesisSet(asList(hypothesis(output1, input1),
-					hypothesis(output2, input2)));
+		return new HypothesisSet(
+				asList(
+						hypothesis(output1, input1),
+						hypothesis(output2, input2)));
 	}
 
 	@Test
