@@ -66,10 +66,8 @@ public class HypothesisSetShould {
 
 	@Test
 	public void throw_an_exception_when_a_formula_is_not_found(){
-		final Hypothesis hypothesis1 = new Hypothesis(asList(1), 1);
-		final Hypothesis hypothesis2 = new Hypothesis(asList(1), 2);
-		final List<Hypothesis> hypotheses = asList(hypothesis1, hypothesis2);
-		final HypothesisSet sut = new HypothesisSet(hypotheses);
+		final HypothesisSet sut = new HypothesisSet(asList(hypothesis(1, 1),
+				hypothesis(2, 1)));
 
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
