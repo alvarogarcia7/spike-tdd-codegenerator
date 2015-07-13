@@ -17,7 +17,7 @@ public class DivisionShould {
 	@Test
 	public void not_fail_if_the_first_output_is_zero () {
 
-		final Application application1 = application(0, 1);
+		final Application application1 = aNew().with(Arrays.asList((Object) 1), (Object) 0).build();
 		final List<Application> hypotheses = Arrays.asList(application1);
 
 		assertThat(new Division().find(hypotheses), is(Optional.empty()));
@@ -28,8 +28,8 @@ public class DivisionShould {
 
 		final int input1 = 1;
 		final int output1 = 1;
-		final Application application1 = application(output1, input1);
-		final Application application2 = application(0, input1);
+		final Application application1 = aNew().with(Arrays.asList((Object) input1), (Object) output1).build();
+		final Application application2 = aNew().with(Arrays.asList((Object) input1), (Object) 0).build();
 		final List<Application> hypotheses = Arrays.asList(application1, application2);
 
 		assertThat(new Division().find(hypotheses), is(Optional.empty()));

@@ -1,7 +1,7 @@
 package com.example.spike.tdd.codegenerator.specification;
 
 
-import com.example.spike.tdd.codegenerator.MethodBuilder;
+import com.example.spike.tdd.codegenerator.method.MethodBuilder;
 import com.example.spike.tdd.codegenerator.application.Application;
 
 import java.util.ArrayList;
