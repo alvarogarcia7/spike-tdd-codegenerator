@@ -81,8 +81,8 @@ public class HypothesisSetShould {
 	private Applications sutWith (final int input1, final int output1, final int input2, final int output2) {
 		return new Applications(
 				asList(
-						ApplicationBuilder.aNew().with(asList((Object) input1), (Object) output1).build(),
-						ApplicationBuilder.aNew().with(asList((Object) input2), (Object) output2).build()));
+						ApplicationBuilder.aNew().with(asList(input1), output1).build(),
+						ApplicationBuilder.aNew().with(asList(input2), output2).build()));
 	}
 
 	private Applications sutWith (final int input, final int output) {
