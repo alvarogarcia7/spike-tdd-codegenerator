@@ -21,7 +21,7 @@ public class HypothesisSet {
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		final List<FunctionFinder> functionFinders = Arrays.asList(new Difference(), new Division(), new ConstantResult());
+		final List<FunctionFinder> functionFinders = Arrays.asList(new Difference(), new Division(), new Identity());
 
 		Optional<Function> candidateFunction = Optional.empty();
 		for (FunctionFinder functionFinder : functionFinders) {

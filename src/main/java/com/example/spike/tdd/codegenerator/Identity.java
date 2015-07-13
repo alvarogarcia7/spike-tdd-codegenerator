@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class ConstantResult implements FunctionFinder {
+public class Identity implements FunctionFinder {
 
 	public Optional<Function> find (final List<Hypothesis> hypotheses) {
 		final Object first = hypotheses.get(0).getOutput();
