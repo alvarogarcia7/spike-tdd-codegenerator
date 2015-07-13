@@ -15,7 +15,6 @@ public class Difference extends SingleIntOperation {
 
 		final int increment = output - input;
 
-		final Function function = (o) -> (int) o + increment;
-		return Optional.of(function);
+		return Optional.of((Function) (o) -> (int) o + increment);
 	}
 }
