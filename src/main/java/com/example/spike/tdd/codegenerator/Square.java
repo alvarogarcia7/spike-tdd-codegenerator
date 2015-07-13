@@ -13,10 +13,14 @@ public class Square implements Operation {
 		final int input = (int)hypotheses.get(0).getParameters().get(0);
 		final int output = (int) hypotheses.get(0).getOutput();
 
-		if((int)Math.pow(input, 2) == output) {
-			return Optional.of((x) -> (int) Math.pow((int) x, 2));
+		if(squared(input) == output) {
+			return Optional.of((x) -> squared((int) x));
 		} else {
 			return Operation.NO_FUNCTION;
 		}
+	}
+
+	private int squared (final int input) {
+		return (int)Math.pow(input, 2);
 	}
 }
