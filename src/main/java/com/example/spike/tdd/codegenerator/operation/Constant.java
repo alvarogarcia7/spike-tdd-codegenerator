@@ -19,7 +19,6 @@ public class Constant extends SingleIntOperation{
 			}
 		}
 
-		final Function function = (o) -> first;
-		return Optional.of(function);
+		return Optional.of((Function) (o) -> first);
 	}
 }
