@@ -23,9 +23,8 @@ public class OperationFinder {
 		final List<Object> firstParameters = applications.first().getParameters();
 		assert (firstParameters.size() == 1);
 
-		final List<Pair<Optional<Function>, Boolean>> doTheyMatch = operations.stream().map(this::verifyHypothesesOrDo).collect(Collectors.toList());
+		final List<Pair<Optional<Function>, Boolean>> matching = getMatchingFunctions();
 
-		final List<Pair<Optional<Function>, Boolean>> matching = doTheyMatch.stream().filter(x -> x.getValue() == true).collect(Collectors.toList());
 		if (matching.size() == 1){
 			final Optional<Function> key = matching.get(0).getKey();
 			if (key.isPresent()) {
@@ -38,6 +37,11 @@ public class OperationFinder {
 		} else {
 			throw new UnsupportedOperationException("Ambiguous function");
 		}
+	}
+
+	private List<Pair<Optional<Function>, Boolean>> getMatchingFunctions () {
+		final List<Pair<Optional<Function>, Boolean>> doTheyMatch = operations.stream().map(this::verifyHypothesesOrDo).collect(Collectors.toList());
+		return doTheyMatch.stream().filter(x -> x.getValue() == true).collect(Collectors.toList());
 	}
 
 	private Pair<Optional<Function>, Boolean> verifyHypothesesOrDo (final Operation operation) {
