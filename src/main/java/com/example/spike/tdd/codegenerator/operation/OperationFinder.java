@@ -1,7 +1,7 @@
 package com.example.spike.tdd.codegenerator.operation;
 
-import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
-import com.example.spike.tdd.codegenerator.hypothesis.HypothesisSet;
+import com.example.spike.tdd.codegenerator.application.Application;
+import com.example.spike.tdd.codegenerator.application.Applications;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,18 +9,18 @@ import java.util.concurrent.Callable;
 import java.util.function.Function;
 
 public class OperationFinder {
-	private final HypothesisSet hypotheses;
+	private final Applications hypotheses;
 	private final List<Operation> operations;
 
-	public OperationFinder (final HypothesisSet hypotheses, final List<Operation> operations) {
+	public OperationFinder (final Applications hypotheses, final List<Operation> operations) {
 
 		this.hypotheses = hypotheses;
 		this.operations = operations;
 	}
 
 	public Function findOperation () {
-		final Hypothesis firstHypothesis = hypotheses.first();
-		final List<Object> firstParameters = firstHypothesis.getParameters();
+		final Application firstApplication = hypotheses.first();
+		final List<Object> firstParameters = firstApplication.getParameters();
 		assert (firstParameters.size() == 1);
 
 
@@ -37,7 +37,7 @@ public class OperationFinder {
 	}
 
 	private Optional<Function> verifyHypothesesOrDo (Optional<Function> candidateFunction, final Callable<Optional<Function>> runnable) {
-		for (Hypothesis current : hypotheses.values()) {
+		for (Application current : hypotheses.values()) {
 			if (notMatchesHypothesis(candidateFunction, current)) {
 				try {
 					return runnable.call();
@@ -50,7 +50,7 @@ public class OperationFinder {
 	}
 
 
-	private boolean notMatchesHypothesis (final Optional<Function> candidateFunction, final Hypothesis current) {
+	private boolean notMatchesHypothesis (final Optional<Function> candidateFunction, final Application current) {
 		return !candidateFunction.isPresent() || !candidateFunction.get().apply(current.getParameters().get(0)).equals(current.getOutput());
 	}
 }

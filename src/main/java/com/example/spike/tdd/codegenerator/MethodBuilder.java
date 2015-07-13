@@ -1,7 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
 
-class MethodBuilder {
+public class MethodBuilder {
 
 	private static final String SPACE = " ";
 	private Class returnType;

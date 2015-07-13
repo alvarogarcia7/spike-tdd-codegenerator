@@ -1,6 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
-import com.example.spike.tdd.codegenerator.hypothesis.Hypotheses;
+import com.example.spike.tdd.codegenerator.specification.Specification;
+import com.example.spike.tdd.codegenerator.specification.Specifications;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -19,10 +20,10 @@ public class TestReader {
 	public static final String LITERAL_PARENTHESIS_AND_BRACKET = "\\s*\\(\\)\\s*\\{";
 	private int currentLine;
 
-	public Hypotheses read (Path path){
+	public Specifications read (Path path){
 		try {
 			final List<String> lines = Files.readAllLines(path, Charset.defaultCharset());
-			return new Hypotheses(findTests(lines));
+			return new Specifications(findTests(lines));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

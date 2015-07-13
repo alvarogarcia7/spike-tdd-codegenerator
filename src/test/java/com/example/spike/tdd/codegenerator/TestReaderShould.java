@@ -1,6 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
-import com.example.spike.tdd.codegenerator.hypothesis.Hypotheses;
+import com.example.spike.tdd.codegenerator.specification.Specification;
+import com.example.spike.tdd.codegenerator.specification.Specifications;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class TestReaderShould {
 
 		final Path path = javaSpecFromTestResource("Addition");
 
-		Hypotheses specs = new TestReader().read(path);
+		Specifications specs = new TestReader().read(path);
 
 		assertThat(specs.getSpecifications(), hasItems(new Specification(
 				"add_two_numbers",
@@ -30,7 +31,7 @@ public class TestReaderShould {
 
 		final Path path = javaSpecFromTestResource("TwoAdditions");
 
-		Hypotheses specs = new TestReader().read(path);
+		Specifications specs = new TestReader().read(path);
 
 		assertThat(specs.getSpecifications(), hasItems(
 

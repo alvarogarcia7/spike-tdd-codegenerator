@@ -1,13 +1,13 @@
 package com.example.spike.tdd.codegenerator;
 
-import com.example.spike.tdd.codegenerator.hypothesis.HypothesisSet;
+import com.example.spike.tdd.codegenerator.application.Applications;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.function.Function;
 
-import static com.example.spike.tdd.codegenerator.hypothesis.HypothesisBuilder.hypothesis;
+import static com.example.spike.tdd.codegenerator.application.ApplicationBuilder.application;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -20,7 +20,7 @@ public class HypothesisSetShould {
 	@Test
 	public void find_the_identity () {
 		final int anyNumber = 2;
-		final HypothesisSet sut = sutWith(anyNumber, anyNumber);
+		final Applications sut = sutWith(anyNumber, anyNumber);
 
 		final Function formula = sut.findOperation();
 
@@ -31,7 +31,7 @@ public class HypothesisSetShould {
 	public void find_the_successor () {
 		final int input = 2;
 		final int output = 3;
-		final HypothesisSet sut = sutWith(input, output);
+		final Applications sut = sutWith(input, output);
 
 		final Function formula = sut.findOperation();
 
@@ -78,17 +78,17 @@ public class HypothesisSetShould {
 
 	}
 
-	private HypothesisSet sutWith (final int input1, final int output1, final int input2, final int output2) {
-		return new HypothesisSet(
+	private Applications sutWith (final int input1, final int output1, final int input2, final int output2) {
+		return new Applications(
 				asList(
-						hypothesis(output1, input1),
-						hypothesis(output2, input2)));
+						application(output1, input1),
+						application(output2, input2)));
 	}
 
-	private HypothesisSet sutWith (final int input, final int output) {
-		return new HypothesisSet(
+	private Applications sutWith (final int input, final int output) {
+		return new Applications(
 				asList(
-						hypothesis(output, input)));
+						application(output, input)));
 	}
 
 }

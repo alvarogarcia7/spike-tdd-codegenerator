@@ -1,8 +1,8 @@
-package com.example.spike.tdd.codegenerator;
+package com.example.spike.tdd.codegenerator.specification;
 
 
-
-import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
+import com.example.spike.tdd.codegenerator.MethodBuilder;
+import com.example.spike.tdd.codegenerator.application.Application;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -77,8 +77,8 @@ public class Specification {
 		return joinParameters(parametersWithNames);
 	}
 
-	public Hypothesis getHypothesis () {
-		return new Hypothesis(getParameters(), getReturnValue());
+	public Application getApplication () {
+		return new Application(getParameters(), getReturnValue());
 	}
 
 	private String joinParameters (final List<String> parametersWithNames) {
