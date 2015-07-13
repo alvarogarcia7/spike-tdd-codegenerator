@@ -29,7 +29,7 @@ public class OperationFinderShould {
 	public void find_the_identity () {
 		final int anyNumber = 2;
 
-		final Function formula = findFormulaMatching(applicationFor(anyNumber, anyNumber));
+		final Function formula = findFormulaMatching(applicationsFor(anyNumber, anyNumber,3,2));
 
 		assertThat(formula.apply(anyNumber), is(anyNumber));
 	}
@@ -39,7 +39,7 @@ public class OperationFinderShould {
 		final int input = 2;
 		final int output = 3;
 
-		final Function formula = findFormulaMatching(applicationFor(input, output));
+		final Function formula = findFormulaMatching(applicationsFor(input, output, 3,4));
 
 		assertThat(formula.apply(input), is(output));
 	}
@@ -82,6 +82,15 @@ public class OperationFinderShould {
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
 
+	}
+
+	@Test
+	public void throw_an_exception_when_the_applications_are_ambiguous(){
+
+		expectedException.expect(UnsupportedOperationException.class);
+		expectedException.expectMessage(is("Ambiguous function"));
+
+		findFormulaMatching(applicationFor(1, 1));
 	}
 
 	private Applications applicationsFor (final int input1, final int output1, final int input2, final int output2) {

@@ -16,6 +16,9 @@ public class Division implements Operation {
 			return Optional.empty();
 		}
 		final int divisor = a / b;
+		if(divisor == 0){
+			return Optional.empty();
+		}
 		Function f = (x) -> (int) x / divisor;
 		return Optional.of(f);
 	}
