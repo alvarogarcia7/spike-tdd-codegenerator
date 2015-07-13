@@ -24,12 +24,7 @@ public class OperationFinderShould {
 
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
-	private List<Operation> operations;
-
-	@Before
-	public void setUp () throws Exception {
-		operations = asList(new Difference(), new Division(), new Identity());
-	}
+	private List<Operation> operations = asList(new Difference(), new Division(), new Identity());
 
 	@Test
 	public void find_the_identity () {
