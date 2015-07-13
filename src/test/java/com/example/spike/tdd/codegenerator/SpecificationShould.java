@@ -1,6 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
-import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
+import com.example.spike.tdd.codegenerator.application.Application;
+import com.example.spike.tdd.codegenerator.specification.Specification;
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class SpecificationShould {
 	@Test
 	public void assert_on_the_production_parameters () {
 
-		assertThat(sut.getHypothesis().getParameters(), hasItems(2, 2));
+		assertThat(sut.getApplication().getParameters(), hasItems(2, 2));
 	}
 
 	@Test
@@ -79,7 +80,7 @@ public class SpecificationShould {
 	@Test
 	public void generate_the_spec_hypothesis () {
 
-		assertThat(sut.getHypothesis(), is(new Hypothesis(Arrays.asList(2, 2), 4)));
+		assertThat(sut.getApplication(), is(new Application(Arrays.asList(2, 2), 4)));
 	}
 
 	private Class isClass (final Class returnType) {

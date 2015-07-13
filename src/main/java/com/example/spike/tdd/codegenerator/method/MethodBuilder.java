@@ -1,7 +1,9 @@
-package com.example.spike.tdd.codegenerator;
+package com.example.spike.tdd.codegenerator.method;
 
 
-class MethodBuilder {
+import javafx.util.Builder;
+
+public class MethodBuilder implements Builder<String> {
 
 	private static final String SPACE = " ";
 	private Class returnType;
@@ -34,6 +36,7 @@ class MethodBuilder {
 		return this;
 	}
 
+	@Override
 	public String build () {
 		return visibility + SPACE + returnType.getSimpleName() + SPACE + methodName +
 				putParenthesisAround(formalParametersAsString) + putBracketsAround(body);

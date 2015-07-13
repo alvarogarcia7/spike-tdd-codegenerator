@@ -1,4 +1,4 @@
-package com.example.spike.tdd.codegenerator.hypothesis;
+package com.example.spike.tdd.codegenerator.application;
 
 import com.example.spike.tdd.codegenerator.operation.Difference;
 import com.example.spike.tdd.codegenerator.operation.Division;
@@ -11,13 +11,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
-public class HypothesisSet {
+public class Applications {
 
-	private final List<Hypothesis> hypotheses;
+	private final List<Application> applications;
 
-	public HypothesisSet (final List<Hypothesis> hypotheses) {
+	public Applications (final List<Application> applications) {
 
-		this.hypotheses = hypotheses;
+		this.applications = applications;
 	}
 
 	public Function findOperation () {
@@ -27,11 +27,11 @@ public class HypothesisSet {
 
 	}
 
-	public Hypothesis first () {
-		return hypotheses.get(0);
+	public Application first () {
+		return applications.get(0);
 	}
 
-	public List<Hypothesis> values () {
-		return Collections.unmodifiableList(hypotheses);
+	public List<Application> values () {
+		return Collections.unmodifiableList(applications);
 	}
 }
