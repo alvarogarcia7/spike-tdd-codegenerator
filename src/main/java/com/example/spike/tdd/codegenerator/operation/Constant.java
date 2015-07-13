@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-//TODO AGB defect: this is not identity but constant
-public class Identity implements Operation {
+public class Constant implements Operation {
 
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {

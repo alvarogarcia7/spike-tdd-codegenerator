@@ -4,7 +4,7 @@ import com.example.spike.tdd.codegenerator.application.Application;
 import com.example.spike.tdd.codegenerator.application.Applications;
 import com.example.spike.tdd.codegenerator.operation.Difference;
 import com.example.spike.tdd.codegenerator.operation.Division;
-import com.example.spike.tdd.codegenerator.operation.Identity;
+import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Operation;
 import com.example.spike.tdd.codegenerator.operation.OperationFinder;
 import org.junit.Rule;
@@ -23,7 +23,7 @@ public class OperationFinderShould {
 
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
-	private List<Operation> operations = asList(new Difference(), new Division(), new Identity());
+	private List<Operation> operations = asList(new Difference(), new Division(), new Constant());
 
 	@Test
 	public void find_the_identity () {
