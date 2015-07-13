@@ -58,7 +58,8 @@ public class OperationFinder {
 
 
 	private boolean matchesHypothesis (final Optional<Function> candidateFunction, final Application current) {
-		return candidateFunction.isPresent() && candidateFunction.get().apply(current.getParameters().get(0)).equals
+		return candidateFunction.isPresent()
+				&& candidateFunction.get().apply(current.getParameters().get(0)).equals
 				(current.getOutput());
 	}
 }
