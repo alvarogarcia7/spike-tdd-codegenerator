@@ -1,6 +1,6 @@
 package com.example.spike.tdd.codegenerator;
 
-import com.example.spike.tdd.codegenerator.finder.Division;
+import com.example.spike.tdd.codegenerator.operation.Division;
 import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
 import org.junit.Test;
 

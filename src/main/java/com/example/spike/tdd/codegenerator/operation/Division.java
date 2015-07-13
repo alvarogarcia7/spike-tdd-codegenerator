@@ -1,4 +1,4 @@
-package com.example.spike.tdd.codegenerator.finder;
+package com.example.spike.tdd.codegenerator.operation;
 
 import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
 
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class Division implements FunctionFinder{
+public class Division implements Operation {
 
 	public Optional<Function> find (final List<Hypothesis> hypotheses) {
 		final int a = (int) hypotheses.get(0).getParameters().get(0);

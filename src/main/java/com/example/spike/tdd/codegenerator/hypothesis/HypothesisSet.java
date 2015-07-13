@@ -1,9 +1,9 @@
 package com.example.spike.tdd.codegenerator.hypothesis;
 
-import com.example.spike.tdd.codegenerator.finder.Difference;
-import com.example.spike.tdd.codegenerator.finder.Division;
-import com.example.spike.tdd.codegenerator.finder.FunctionFinder;
-import com.example.spike.tdd.codegenerator.finder.Identity;
+import com.example.spike.tdd.codegenerator.operation.Difference;
+import com.example.spike.tdd.codegenerator.operation.Division;
+import com.example.spike.tdd.codegenerator.operation.Operation;
+import com.example.spike.tdd.codegenerator.operation.Identity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,21 +20,21 @@ public class HypothesisSet {
 		this.hypotheses = hypotheses;
 	}
 
-	public Function findFormula () {
+	public Function findOperation () {
 
 		final Hypothesis firstHypothesis = hypotheses.get(0);
 		final List<Object> firstParameters = firstHypothesis.getParameters();
 		assert (firstParameters.size() == 1);
 
-		final List<FunctionFinder> functionFinders = Arrays.asList(new Difference(), new Division(), new Identity());
+		final List<Operation> operations = Arrays.asList(new Difference(), new Division(), new Identity());
 
-		Optional<Function> candidateFunction = Optional.empty();
-		for (FunctionFinder functionFinder : functionFinders) {
-			candidateFunction = verifyHypothesesOrDo(candidateFunction, () -> functionFinder.find(hypotheses));
+		Optional<Function> candidateOperation = Optional.empty();
+		for (Operation operation : operations) {
+			candidateOperation = verifyHypothesesOrDo(candidateOperation, () -> operation.find(hypotheses));
 		}
 
-		if (candidateFunction.isPresent()) {
-			return candidateFunction.get();
+		if (candidateOperation.isPresent()) {
+			return candidateOperation.get();
 		} else {
 			throw new UnsupportedOperationException("Not yet ready");
 		}

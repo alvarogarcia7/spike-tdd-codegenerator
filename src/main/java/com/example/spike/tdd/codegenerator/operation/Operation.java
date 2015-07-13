@@ -1,4 +1,4 @@
-package com.example.spike.tdd.codegenerator.finder;
+package com.example.spike.tdd.codegenerator.operation;
 
 import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
 
@@ -7,6 +7,6 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @FunctionalInterface
-public interface FunctionFinder {
+public interface Operation {
 	public Optional<Function> find(List<Hypothesis> hypotheses);
 }

@@ -22,7 +22,7 @@ public class HypothesisSetShould {
 		final int anyNumber = 2;
 		final HypothesisSet sut = sutWith(anyNumber, anyNumber);
 
-		final Function formula = sut.findFormula();
+		final Function formula = sut.findOperation();
 
 		assertThat(formula.apply(anyNumber), is(anyNumber));
 	}
@@ -33,7 +33,7 @@ public class HypothesisSetShould {
 		final int output = 3;
 		final HypothesisSet sut = sutWith(input, output);
 
-		final Function formula = sut.findFormula();
+		final Function formula = sut.findOperation();
 
 		assertThat(formula.apply(input), is(output));
 	}
@@ -48,7 +48,7 @@ public class HypothesisSetShould {
 
 		final HypothesisSet sut = sutWith(input1, output1, input2, output2);
 
-		final Function formula = sut.findFormula();
+		final Function formula = sut.findOperation();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
@@ -62,7 +62,7 @@ public class HypothesisSetShould {
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
 
-		sut.findFormula();
+		sut.findOperation();
 	}
 
 	@Test
@@ -76,7 +76,7 @@ public class HypothesisSetShould {
 
 		final HypothesisSet sut = sutWith(input1, output1, input2, output2);
 
-		final Function formula = sut.findFormula();
+		final Function formula = sut.findOperation();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
