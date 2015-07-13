@@ -19,8 +19,7 @@ public class OperationFinder {
 	}
 
 	public Function findOperation () {
-		final Application firstApplication = hypotheses.first();
-		final List<Object> firstParameters = firstApplication.getParameters();
+		final List<Object> firstParameters = hypotheses.first().getParameters();
 		assert (firstParameters.size() == 1);
 
 

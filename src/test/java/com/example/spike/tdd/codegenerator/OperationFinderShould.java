@@ -40,10 +40,6 @@ public class OperationFinderShould {
 		assertThat(formula.apply(anyNumber), is(anyNumber));
 	}
 
-	private OperationFinder sutWith (final Applications applications) {
-		return new OperationFinder(applications, operations);
-	}
-
 	@Test
 	public void find_the_successor () {
 		final int input = 2;
@@ -107,6 +103,10 @@ public class OperationFinderShould {
 	private Applications getApplications (final List<Application> applications) {
 		return new Applications(
 				applications);
+	}
+
+	private OperationFinder sutWith (final Applications applications) {
+		return new OperationFinder(applications, operations);
 	}
 
 }
