@@ -25,18 +25,16 @@ public class OperationFinder {
 
 		final List<Pair<Optional<Function>, Boolean>> matching = getMatchingFunctions();
 
-		if (matching.size() == 1){
+		if (matching.size() == 1) {
 			final Optional<Function> key = matching.get(0).getKey();
 			if (key.isPresent()) {
 				return key.get();
-			} else {
-				throw new UnsupportedOperationException("Not yet ready");
 			}
-		} else if (matching .size() == 0){
-			throw new UnsupportedOperationException("Not yet ready");
-		} else {
+		} else if(matching.size() > 1){
 			throw new UnsupportedOperationException("Ambiguous function");
 		}
+
+		throw new UnsupportedOperationException("Not yet ready");
 	}
 
 	private List<Pair<Optional<Function>, Boolean>> getMatchingFunctions () {
