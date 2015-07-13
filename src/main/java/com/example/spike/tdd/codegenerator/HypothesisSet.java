@@ -1,5 +1,10 @@
 package com.example.spike.tdd.codegenerator;
 
+import com.example.spike.tdd.codegenerator.finder.Difference;
+import com.example.spike.tdd.codegenerator.finder.Division;
+import com.example.spike.tdd.codegenerator.finder.FunctionFinder;
+import com.example.spike.tdd.codegenerator.finder.Identity;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
