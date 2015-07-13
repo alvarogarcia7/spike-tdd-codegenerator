@@ -2,6 +2,12 @@ package com.example.spike.tdd.codegenerator;
 
 import com.example.spike.tdd.codegenerator.application.Application;
 import com.example.spike.tdd.codegenerator.application.Applications;
+import com.example.spike.tdd.codegenerator.operation.Difference;
+import com.example.spike.tdd.codegenerator.operation.Division;
+import com.example.spike.tdd.codegenerator.operation.Identity;
+import com.example.spike.tdd.codegenerator.operation.Operation;
+import com.example.spike.tdd.codegenerator.operation.OperationFinder;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -14,28 +20,36 @@ import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class HypothesisSetShould {
+public class OperationFinderShould {
 
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
+	private List<Operation> operations;
+
+	@Before
+	public void setUp () throws Exception {
+		operations = asList(new Difference(), new Division(), new Identity());
+	}
 
 	@Test
 	public void find_the_identity () {
 		final int anyNumber = 2;
-		final Applications sut = sutWith(anyNumber, anyNumber);
 
-		final Function formula = sut.findOperation();
+		final Function formula = sutWith(applicationFor(anyNumber, anyNumber)).findOperation();
 
 		assertThat(formula.apply(anyNumber), is(anyNumber));
+	}
+
+	private OperationFinder sutWith (final Applications applications) {
+		return new OperationFinder(applications, operations);
 	}
 
 	@Test
 	public void find_the_successor () {
 		final int input = 2;
 		final int output = 3;
-		final Applications sut = sutWith(input, output);
 
-		final Function formula = sut.findOperation();
+		final Function formula = sutWith(applicationFor(input, output)).findOperation();
 
 		assertThat(formula.apply(input), is(output));
 	}
@@ -48,7 +62,7 @@ public class HypothesisSetShould {
 		final int input2 = 2;
 		final int output2 = 0;
 
-		final Function formula = sutWith(input1, output1, input2, output2).findOperation();
+		final Function formula = sutWith(applicationsFor(input1, output1, input2, output2)).findOperation();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
@@ -61,7 +75,7 @@ public class HypothesisSetShould {
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
 
-		sutWith(1, 1, 1, 2).findOperation();
+		sutWith(applicationsFor(1, 1, 1, 2)).findOperation();
 	}
 
 	@Test
@@ -73,26 +87,26 @@ public class HypothesisSetShould {
 		final int output2 = 1;
 
 
-		final Function formula = sutWith(input1, output1, input2, output2).findOperation();
+		final Function formula = sutWith(applicationsFor(input1, output1, input2, output2)).findOperation();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
 
 	}
 
-	private Applications sutWith (final int input1, final int output1, final int input2, final int output2) {
+	private Applications applicationsFor (final int input1, final int output1, final int input2, final int output2) {
 		return getApplications(asList(
 				aNew().with(asList(input1), output1).build(),
 				aNew().with(asList(input2), output2).build()));
 	}
 
+	private Applications applicationFor (final int input, final int output) {
+		return getApplications(asList(aNew().with(asList(input), output).build()));
+	}
+
 	private Applications getApplications (final List<Application> applications) {
 		return new Applications(
 				applications);
-	}
-
-	private Applications sutWith (final int input, final int output) {
-		return getApplications(asList(aNew().with(asList(input), output).build()));
 	}
 
 }

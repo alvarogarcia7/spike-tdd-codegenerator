@@ -20,13 +20,6 @@ public class Applications {
 		this.applications = applications;
 	}
 
-	public Function findOperation () {
-
-		final List<Operation> operations = Arrays.asList(new Difference(), new Division(), new Identity());
-		return new OperationFinder(this, operations).findOperation();
-
-	}
-
 	public Application first () {
 		return applications.get(0);
 	}
