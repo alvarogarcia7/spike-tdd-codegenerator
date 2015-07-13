@@ -46,9 +46,7 @@ public class HypothesisSetShould {
 		final int input2 = 2;
 		final int output2 = 0;
 
-		final HypothesisSet sut = sutWith(input1, output1, input2, output2);
-
-		final Function formula = sut.findOperation();
+		final Function formula = sutWith(input1, output1, input2, output2).findOperation();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
@@ -57,12 +55,11 @@ public class HypothesisSetShould {
 
 	@Test
 	public void throw_an_exception_when_a_formula_is_not_found(){
-		final HypothesisSet sut = sutWith(1, 1, 1, 2);
 
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
 
-		sut.findOperation();
+		sutWith(1, 1, 1, 2).findOperation();
 	}
 
 	@Test
@@ -74,9 +71,7 @@ public class HypothesisSetShould {
 		final int output2 = 1;
 
 
-		final HypothesisSet sut = sutWith(input1, output1, input2, output2);
-
-		final Function formula = sut.findOperation();
+		final Function formula = sutWith(input1, output1, input2, output2).findOperation();
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
