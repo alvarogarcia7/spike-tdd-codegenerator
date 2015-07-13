@@ -7,7 +7,6 @@ import com.example.spike.tdd.codegenerator.operation.Division;
 import com.example.spike.tdd.codegenerator.operation.Identity;
 import com.example.spike.tdd.codegenerator.operation.Operation;
 import com.example.spike.tdd.codegenerator.operation.OperationFinder;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -30,7 +29,7 @@ public class OperationFinderShould {
 	public void find_the_identity () {
 		final int anyNumber = 2;
 
-		final Function formula = sutWith(applicationFor(anyNumber, anyNumber)).findOperation();
+		final Function formula = findFormulaMatching(applicationFor(anyNumber, anyNumber));
 
 		assertThat(formula.apply(anyNumber), is(anyNumber));
 	}
@@ -40,7 +39,7 @@ public class OperationFinderShould {
 		final int input = 2;
 		final int output = 3;
 
-		final Function formula = sutWith(applicationFor(input, output)).findOperation();
+		final Function formula = findFormulaMatching(applicationFor(input, output));
 
 		assertThat(formula.apply(input), is(output));
 	}
@@ -53,7 +52,7 @@ public class OperationFinderShould {
 		final int input2 = 2;
 		final int output2 = 0;
 
-		final Function formula = sutWith(applicationsFor(input1, output1, input2, output2)).findOperation();
+		final Function formula = findFormulaMatching(applicationsFor(input1, output1, input2, output2));
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
@@ -66,7 +65,7 @@ public class OperationFinderShould {
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
 
-		sutWith(applicationsFor(1, 1, 1, 2)).findOperation();
+		findFormulaMatching(applicationsFor(1, 1, 1, 2));
 	}
 
 	@Test
@@ -78,7 +77,7 @@ public class OperationFinderShould {
 		final int output2 = 1;
 
 
-		final Function formula = sutWith(applicationsFor(input1, output1, input2, output2)).findOperation();
+		final Function formula = findFormulaMatching(applicationsFor(input1, output1, input2, output2));
 
 		assertThat(formula.apply(input1), is(output1));
 		assertThat(formula.apply(input2), is(output2));
@@ -102,6 +101,10 @@ public class OperationFinderShould {
 
 	private OperationFinder sutWith (final Applications applications) {
 		return new OperationFinder(applications, operations);
+	}
+
+	private Function findFormulaMatching (final Applications applications) {
+		return sutWith(applications).findOperation();
 	}
 
 }
