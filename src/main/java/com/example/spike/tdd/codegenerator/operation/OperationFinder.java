@@ -10,17 +10,17 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class OperationFinder {
-	private final Applications hypotheses;
+	private final Applications applications;
 	private final List<Operation> operations;
 
-	public OperationFinder (final Applications hypotheses, final List<Operation> operations) {
+	public OperationFinder (final Applications applications, final List<Operation> operations) {
 
-		this.hypotheses = hypotheses;
+		this.applications = applications;
 		this.operations = operations;
 	}
 
 	public Function findOperation () {
-		final List<Object> firstParameters = hypotheses.first().getParameters();
+		final List<Object> firstParameters = applications.first().getParameters();
 		assert (firstParameters.size() == 1);
 
 		final List<Pair<Optional<Function>, Boolean>> doTheyMatch = operations.stream().map(this::verifyHypothesesOrDo).collect(Collectors.toList());
@@ -44,18 +44,19 @@ public class OperationFinder {
 		Optional<Function> f;
 		boolean matches = true;
 		try {
-			f = operation.find(hypotheses.values());
+			f = operation.find(applications.values());
 		} catch (Exception e) {
 			f = Operation.NO_FUNCTION;
 		}
-		for (Application current : hypotheses.values()) {
-			matches &= !notMatchesHypothesis(f, current);
+		for (Application current : applications.values()) {
+			matches &= matchesHypothesis(f, current);
 		}
 		return new Pair<>(f, matches);
 	}
 
 
-	private boolean notMatchesHypothesis (final Optional<Function> candidateFunction, final Application current) {
-		return !candidateFunction.isPresent() || !candidateFunction.get().apply(current.getParameters().get(0)).equals(current.getOutput());
+	private boolean matchesHypothesis (final Optional<Function> candidateFunction, final Application current) {
+		return candidateFunction.isPresent() && candidateFunction.get().apply(current.getParameters().get(0)).equals
+				(current.getOutput());
 	}
 }
