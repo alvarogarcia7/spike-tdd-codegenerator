@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class Difference implements Operation {
+	@Override
 	public Optional<Function> find (List<Application> hypotheses) {
 		final int input = (int)hypotheses.get(0).getParameters().get(0);
 		final int output = (int) hypotheses.get(0).getOutput();

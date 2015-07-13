@@ -7,7 +7,8 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class Division implements Operation {
-
+	
+	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
 		final int a = (int) hypotheses.get(0).getParameters().get(0);
 		final int b = (int) hypotheses.get(0).getOutput();

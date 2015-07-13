@@ -8,6 +8,7 @@ import java.util.function.Function;
 
 public class Identity implements Operation {
 
+	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
 		final Object first = hypotheses.get(0).getOutput();
 
