@@ -38,22 +38,22 @@ public class OperationFinder {
 	}
 
 	private List<Pair<Optional<Function>, Boolean>> getMatchingFunctions () {
-		final List<Pair<Optional<Function>, Boolean>> doTheyMatch = operations.stream().map(this::verifyHypothesesOrDo).collect(Collectors.toList());
+		final List<Pair<Optional<Function>, Boolean>> doTheyMatch = operations.stream().map(this::matches).collect(Collectors.toList());
 		return doTheyMatch.stream().filter(x -> x.getValue() == true).collect(Collectors.toList());
 	}
 
-	private Pair<Optional<Function>, Boolean> verifyHypothesesOrDo (final Operation operation) {
-		Optional<Function> f;
+	private Pair<Optional<Function>, Boolean> matches (final Operation operation) {
+		Optional<Function> function;
 		boolean matches = true;
 		try {
-			f = operation.find(applications.values());
+			function = operation.find(applications.values());
 		} catch (Exception e) {
-			f = Operation.NO_FUNCTION;
+			function = Operation.NO_FUNCTION;
 		}
 		for (Application current : applications.values()) {
-			matches &= matchesHypothesis(f, current);
+			matches &= matchesHypothesis(function, current);
 		}
-		return new Pair<>(f, matches);
+		return new Pair<>(function, matches);
 	}
 
 
