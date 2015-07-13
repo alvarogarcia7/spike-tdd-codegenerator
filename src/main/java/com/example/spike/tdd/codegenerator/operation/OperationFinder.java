@@ -45,12 +45,13 @@ public class OperationFinder {
 	private Pair<Optional<Function>, Boolean> matches (final Operation operation) {
 		Optional<Function> function;
 		boolean matches = true;
+		final List<Application> applications = this.applications.values();
 		try {
-			function = operation.find(applications.values());
+			function = operation.find(applications);
 		} catch (Exception e) {
 			function = Operation.NO_FUNCTION;
 		}
-		for (Application current : applications.values()) {
+		for (Application current : applications) {
 			matches &= matchesHypothesis(function, current);
 		}
 		return new Pair<>(function, matches);
