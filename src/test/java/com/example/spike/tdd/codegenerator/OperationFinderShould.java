@@ -108,10 +108,7 @@ public class OperationFinderShould {
 	@Test
 	public void find_the_square_formula () {
 
-		final Function formula = findFormulaMatching(applicationsFor(1, 1, 2, 4), new Square());
-
-		assertThat(formula.apply(1), is(1));
-		assertThat(formula.apply(2), is(4));
+		final Function formula = findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new Square());
 
 	}
 
@@ -139,11 +136,17 @@ public class OperationFinderShould {
 	}
 
 	private Function findFormulaMatching (final Applications applications, final List<Operation> operations) {
-		return sutWith(applications, operations).findOperation();
+		final Function formula = sutWith(applications, operations).findOperation();
+
+		for (Application application : applications.values()) {
+			assertThat(formula.apply(application.getParameters().get(0)), is(application.getOutput()));
+		}
+
+		return formula;
 	}
 
-	private Function findFormulaMatching (final Applications applications, final Operation operation) {
-		return sutWith(applications, Arrays.asList(operation)).findOperation();
+	private Function findFormulaMatchingAndAssert (final Applications applications, final Operation operation) {
+		return findFormulaMatching(applications, Arrays.asList(operation));
 	}
 
 }
