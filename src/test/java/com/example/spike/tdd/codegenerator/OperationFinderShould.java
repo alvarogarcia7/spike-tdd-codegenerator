@@ -27,35 +27,30 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_the_identity () {
-		final int anyNumber = 2;
 
-		final Function formula = findFormulaMatching(applicationsFor(anyNumber, anyNumber,3,2));
+		final Function formula = findFormulaMatching(applicationsFor(2, 2, 3, 2));
 
-		assertThat(formula.apply(anyNumber), is(anyNumber));
+		assertThat(formula.apply(2), is(2));
+		assertThat(formula.apply(3), is(2));
 	}
 
 	@Test
 	public void find_the_successor () {
-		final int input = 2;
-		final int output = 3;
 
-		final Function formula = findFormulaMatching(applicationsFor(input, output, 3,4));
+		final Function formula = findFormulaMatching(applicationsFor(2, 3, 3, 4));
 
-		assertThat(formula.apply(input), is(output));
+		assertThat(formula.apply(2), is(3));
+		assertThat(formula.apply(3), is(4));
 	}
 
 	@Test
 	public void find_the_formula_with_several_hypotheses () {
 		//multiplying by zero
-		final int input1 = 1;
-		final int output1 = 0;
-		final int input2 = 2;
-		final int output2 = 0;
 
-		final Function formula = findFormulaMatching(applicationsFor(input1, output1, input2, output2));
+		final Function formula = findFormulaMatching(applicationsFor(1, 0, 2, 0));
 
-		assertThat(formula.apply(input1), is(output1));
-		assertThat(formula.apply(input2), is(output2));
+		assertThat(formula.apply(1), is(0));
+		assertThat(formula.apply(2), is(0));
 
 	}
 
@@ -71,16 +66,11 @@ public class OperationFinderShould {
 	@Test
 	public void find_the_division_by_the_output_is_the_output () {
 		//this is not the division by two nor the square (or its inverse) operation
-		final int input1 = 4;
-		final int output1 = 2;
-		final int input2 = 2;
-		final int output2 = 1;
 
+		final Function formula = findFormulaMatching(applicationsFor(4, 2, 2, 1));
 
-		final Function formula = findFormulaMatching(applicationsFor(input1, output1, input2, output2));
-
-		assertThat(formula.apply(input1), is(output1));
-		assertThat(formula.apply(input2), is(output2));
+		assertThat(formula.apply(4), is(2));
+		assertThat(formula.apply(2), is(1));
 
 	}
 
