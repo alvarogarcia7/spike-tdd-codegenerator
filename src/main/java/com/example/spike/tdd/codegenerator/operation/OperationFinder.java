@@ -46,7 +46,7 @@ public class OperationFinder {
 		try {
 			f = operation.find(hypotheses.values());
 		} catch (Exception e) {
-			f = Optional.empty();
+			f = Operation.NO_FUNCTION;
 		}
 		for (Application current : hypotheses.values()) {
 			matches &= !notMatchesHypothesis(f, current);

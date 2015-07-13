@@ -8,5 +8,7 @@ import java.util.function.Function;
 
 @FunctionalInterface
 public interface Operation {
+	Optional<Function> NO_FUNCTION = Optional.empty();
+
 	public Optional<Function> find(List<Application> hypotheses);
 }

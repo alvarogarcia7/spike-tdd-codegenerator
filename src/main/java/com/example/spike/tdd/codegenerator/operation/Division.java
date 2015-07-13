@@ -13,11 +13,11 @@ public class Division implements Operation {
 		final int a = (int) hypotheses.get(0).getParameters().get(0);
 		final int b = (int) hypotheses.get(0).getOutput();
 		if(hypotheses.stream().filter(x -> x.getOutput().equals(0)).findAny().isPresent()){
-			return Optional.empty();
+			return NO_FUNCTION;
 		}
 		final int divisor = a / b;
 		if(divisor == 0){
-			return Optional.empty();
+			return NO_FUNCTION;
 		}
 		Function f = (x) -> (int) x / divisor;
 		return Optional.of(f);
