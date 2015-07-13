@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class Square implements Operation {
+public class Square extends SingleIntOperation {
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
-		final int input = (int)hypotheses.get(0).getParameters().get(0);
-		final int output = (int) hypotheses.get(0).getOutput();
+		final int input = firstInput(hypotheses);
+		final int output = getOutput(hypotheses);
 
 		if(squared(input) == output) {
 			return Optional.of((x) -> squared((int) x));
