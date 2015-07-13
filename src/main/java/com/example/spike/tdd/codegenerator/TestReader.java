@@ -1,5 +1,7 @@
 package com.example.spike.tdd.codegenerator;
 
+import com.example.spike.tdd.codegenerator.hypothesis.Hypotheses;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;

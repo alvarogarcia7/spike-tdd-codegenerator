@@ -1,5 +1,6 @@
 package com.example.spike.tdd.codegenerator;
 
+import com.example.spike.tdd.codegenerator.hypothesis.Hypotheses;
 import org.junit.Test;
 
 import java.io.IOException;

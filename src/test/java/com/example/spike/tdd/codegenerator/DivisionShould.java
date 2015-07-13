@@ -1,13 +1,14 @@
 package com.example.spike.tdd.codegenerator;
 
 import com.example.spike.tdd.codegenerator.finder.Division;
+import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.spike.tdd.codegenerator.HypothesisBuilder.*;
+import static com.example.spike.tdd.codegenerator.hypothesis.HypothesisBuilder.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 

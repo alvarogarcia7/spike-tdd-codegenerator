@@ -1,12 +1,13 @@
 package com.example.spike.tdd.codegenerator;
 
+import com.example.spike.tdd.codegenerator.hypothesis.HypothesisSet;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.function.Function;
 
-import static com.example.spike.tdd.codegenerator.HypothesisBuilder.hypothesis;
+import static com.example.spike.tdd.codegenerator.hypothesis.HypothesisBuilder.hypothesis;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

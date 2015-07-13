@@ -1,4 +1,4 @@
-package com.example.spike.tdd.codegenerator;
+package com.example.spike.tdd.codegenerator.hypothesis;
 
 import java.util.List;
 import java.util.StringJoiner;

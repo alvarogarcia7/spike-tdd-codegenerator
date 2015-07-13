@@ -1,4 +1,4 @@
-package com.example.spike.tdd.codegenerator;
+package com.example.spike.tdd.codegenerator.hypothesis;
 
 import com.example.spike.tdd.codegenerator.finder.Difference;
 import com.example.spike.tdd.codegenerator.finder.Division;

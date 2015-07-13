@@ -2,13 +2,15 @@ package com.example.spike.tdd.codegenerator;
 
 
 
+import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-class Specification {
+public class Specification {
 	private final String name;
 	private final String productionCode;
 	private final String testCode;

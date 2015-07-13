@@ -1,6 +1,6 @@
 package com.example.spike.tdd.codegenerator.finder;
 
-import com.example.spike.tdd.codegenerator.Hypothesis;
+import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
 
 import java.util.List;
 import java.util.Optional;

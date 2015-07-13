@@ -1,5 +1,6 @@
 package com.example.spike.tdd.codegenerator;
 
+import com.example.spike.tdd.codegenerator.hypothesis.Hypothesis;
 import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
