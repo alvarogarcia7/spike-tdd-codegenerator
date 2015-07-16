@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+@Deprecated
+//This is now more generic in the AnyExponentiation
 public class CubicSquare extends SingleIntOperation {
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
