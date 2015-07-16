@@ -2,6 +2,7 @@ package com.example.spike.tdd.codegenerator;
 
 import com.example.spike.tdd.codegenerator.application.Application;
 import com.example.spike.tdd.codegenerator.application.Applications;
+import com.example.spike.tdd.codegenerator.operation.BaseExponentation;
 import com.example.spike.tdd.codegenerator.operation.PowerOf;
 import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Difference;
@@ -113,6 +114,11 @@ public class OperationFinderShould {
 	@Test
 	public void find_exponentiation_to_10 () {
 		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1024, 3, 59049), new PowerOf());
+	}
+
+	@Test
+	public void find_base_two_exponentiation () {
+		findFormulaMatchingAndAssert(applicationsFor(0, 1, 1, 2, 2, 4), new BaseExponentation());
 	}
 
 	private Applications applicationsFor (final int... inputsAndOutputs) {
