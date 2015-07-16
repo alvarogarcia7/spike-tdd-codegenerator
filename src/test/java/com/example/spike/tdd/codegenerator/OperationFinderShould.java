@@ -2,6 +2,7 @@ package com.example.spike.tdd.codegenerator;
 
 import com.example.spike.tdd.codegenerator.application.Application;
 import com.example.spike.tdd.codegenerator.application.Applications;
+import com.example.spike.tdd.codegenerator.operation.AnyExponentiation;
 import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Difference;
 import com.example.spike.tdd.codegenerator.operation.Division;
@@ -95,6 +96,11 @@ public class OperationFinderShould {
 	@Test
 	public void find_the_cubic_square_formula () {
 		findFormulaMatchingAndAssert(applicationsFor(2, 8, 3, 27), new CubicSquare());
+	}
+
+	@Test
+	public void find_any_square_formula () {
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new AnyExponentiation());
 	}
 
 	private Applications applicationsFor (final int input1, final int output1, final int input2, final int output2) {
