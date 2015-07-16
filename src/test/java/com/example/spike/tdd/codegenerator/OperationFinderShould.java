@@ -2,7 +2,7 @@ package com.example.spike.tdd.codegenerator;
 
 import com.example.spike.tdd.codegenerator.application.Application;
 import com.example.spike.tdd.codegenerator.application.Applications;
-import com.example.spike.tdd.codegenerator.operation.AnyExponentiation;
+import com.example.spike.tdd.codegenerator.operation.PowerOf;
 import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Difference;
 import com.example.spike.tdd.codegenerator.operation.Division;
@@ -92,27 +92,27 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_the_square_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4, 3, 9, 4, 16, 5, 25), new AnyExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4, 3, 9, 4, 16, 5, 25), new PowerOf());
 	}
 
 	@Test
-	public void find_the_cubic_square_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(2, 8, 3, 27), new AnyExponentiation());
+	public void find_the_cubic_formula () {
+		findFormulaMatchingAndAssert(applicationsFor(2, 8, 3, 27), new PowerOf());
 	}
 
 	@Test
 	public void find_exponentiation_to_one () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 2), new AnyExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 2), new PowerOf());
 	}
 
 	@Test
 	public void find_exponentiation_to_zero () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1), new AnyExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1), new PowerOf());
 	}
 
 	@Test
 	public void find_exponentiation_to_10 () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1024, 3, 59049), new AnyExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1024, 3, 59049), new PowerOf());
 	}
 
 	private Applications applicationsFor (final int... inputsAndOutputs) {

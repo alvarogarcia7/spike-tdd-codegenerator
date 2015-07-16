@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Deprecated
-//This is now more generic in the AnyExponentiation
+//This is now more generic in the PowerOf
 public class CubicSquare extends SingleIntOperation {
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {

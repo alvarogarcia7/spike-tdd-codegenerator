@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-public class AnyExponentiation extends SingleIntOperation {
+public class PowerOf extends SingleIntOperation {
 
 	private List<Application> hypotheses;
 
@@ -25,7 +25,7 @@ public class AnyExponentiation extends SingleIntOperation {
 			System.out.println(matchingCandidates);
 			return Optional.of((x) -> powAsInt((int) x, matchingCandidates.get(0)));
 		} else if (matchingCandidates.size() > 1) {
-			System.out.println("Found more than one solution: AnyExponentiation, with exponents " + matchingCandidates);
+			System.out.println("Found more than one solution: PowerOf, with exponents " + matchingCandidates);
 		}
 
 		return Optional.empty();
