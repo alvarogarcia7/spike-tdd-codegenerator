@@ -21,7 +21,7 @@ public class AnyExponentiation extends SingleIntOperation {
 				continue;
 			} else {
 				for (int j = 0; j < output; j++) {
-					if (Math.pow(input, j) == output) {
+					if (powAsInt(input, j) == output) {
 						exponentCandidates.add(j);
 					}
 				}
@@ -37,7 +37,7 @@ public class AnyExponentiation extends SingleIntOperation {
 				final int input = getInput(hypotheses, i);
 				final int output = getOutput(hypotheses, i);
 
-				if (Math.pow(input, exponentCandidate) != output) {
+				if (powAsInt(input, exponentCandidate) != output) {
 					matches = false;
 				}
 			}
@@ -49,12 +49,16 @@ public class AnyExponentiation extends SingleIntOperation {
 
 		if(matchingCandidates.size() == 1 ){
 			System.out.println(matchingCandidates);
-			return Optional.of((x) -> (int)Math.pow((int) x, matchingCandidates.get(0)));
+			return Optional.of((x) -> powAsInt((int) x, matchingCandidates.get(0)));
 		} else if (matchingCandidates.size() > 1){
 			System.out.println("Found more than one solution: AnyExponentiation, with exponents " + matchingCandidates);
 		}
 
 		return Optional.empty();
+	}
+
+	private int powAsInt (final int input, final int j) {
+		return (int)Math.pow(input, j);
 	}
 
 	protected int getInput (final List<Application> hypotheses, int position) {
