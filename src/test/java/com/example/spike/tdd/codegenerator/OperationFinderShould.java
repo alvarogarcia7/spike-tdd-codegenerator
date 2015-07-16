@@ -121,6 +121,11 @@ public class OperationFinderShould {
 		findFormulaMatchingAndAssert(applicationsFor(0, 1, 1, 2, 2, 4), new BaseExponentiation());
 	}
 
+	@Test
+	public void find_base_three_exponentiation () {
+		findFormulaMatchingAndAssert(applicationsFor(0, 1, 1, 3, 2, 9), new BaseExponentiation());
+	}
+
 	private Applications applicationsFor (final int... inputsAndOutputs) {
 		if(inputsAndOutputs.length % 2 != 0) {
 			fail("every input should have an output");
