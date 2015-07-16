@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-public class BaseExponentation extends SingleIntOperation {
+public class BaseExponentiation extends SingleIntOperation {
 
 	private List<Application> hypotheses;
 
@@ -25,7 +25,7 @@ public class BaseExponentation extends SingleIntOperation {
 			System.out.println(matchingCandidates);
 			return Optional.of((x) -> exponentiationAsInt((int) x, matchingCandidates.get(0)));
 		} else if (matchingCandidates.size() > 1) {
-			System.out.println("Found more than one solution: BaseExponentation, with exponents " + matchingCandidates);
+			System.out.println("Found more than one solution: BaseExponentiation, with exponents " + matchingCandidates);
 		}
 
 		return Optional.empty();
