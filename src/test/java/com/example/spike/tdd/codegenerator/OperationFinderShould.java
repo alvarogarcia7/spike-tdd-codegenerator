@@ -127,8 +127,7 @@ public class OperationFinderShould {
 	}
 
 	private Applications getApplications (final List<Application> applications) {
-		return new Applications(
-				applications);
+		return new Applications(applications);
 	}
 
 	private OperationFinder sutWith (final Applications applications, final List<Operation> operations) {
