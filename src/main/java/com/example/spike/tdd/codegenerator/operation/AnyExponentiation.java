@@ -9,12 +9,16 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class AnyExponentiation extends SingleIntOperation {
+
+	private List<Application> hypotheses;
+
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
 
-		final List<Integer> exponentCandidates = getCandidateExponents(hypotheses);
+		this.hypotheses = hypotheses;
+		final List<Integer> exponentCandidates = getCandidateExponents();
 
-		final List<Integer> matchingCandidates = filterAllThoseMatch(hypotheses, exponentCandidates);
+		final List<Integer> matchingCandidates = filterAllThoseMatch(exponentCandidates);
 
 		if(matchingCandidates.size() == 1 ){
 			System.out.println(matchingCandidates);
@@ -26,7 +30,7 @@ public class AnyExponentiation extends SingleIntOperation {
 		return Optional.empty();
 	}
 
-	private List<Integer> filterAllThoseMatch (final List<Application> hypotheses, final List<Integer> exponentCandidates) {
+	private List<Integer> filterAllThoseMatch (final List<Integer> exponentCandidates) {
 		final List<Integer> matchingCandidates = new ArrayList<>();
 		for (Integer exponentCandidate : exponentCandidates) {
 
@@ -48,7 +52,7 @@ public class AnyExponentiation extends SingleIntOperation {
 		return matchingCandidates;
 	}
 
-	private List<Integer> getCandidateExponents (final List<Application> hypotheses) {
+	private List<Integer> getCandidateExponents () {
 		final List<Integer> exponentCandidates = new ArrayList<>();
 		for (int i = 0; i < hypotheses.size(); i++) {
 			final int input = getInput(hypotheses, i);
