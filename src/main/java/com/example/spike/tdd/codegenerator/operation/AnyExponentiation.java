@@ -3,6 +3,7 @@ package com.example.spike.tdd.codegenerator.operation;
 import com.example.spike.tdd.codegenerator.SingleIntOperation;
 import com.example.spike.tdd.codegenerator.application.Application;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -10,6 +11,57 @@ import java.util.function.Function;
 public class AnyExponentiation extends SingleIntOperation {
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
+
+		final List<Integer> exponentCandidates = new ArrayList<>();
+		for (int i = 0; i < hypotheses.size(); i++) {
+			final int input = getInput(hypotheses, i);
+			final int output = getOutput(hypotheses, i);
+
+			if (input == output) {
+				continue;
+			} else {
+				for (int j = 0; j < output; j++) {
+					if (Math.pow(input, j) == output) {
+						exponentCandidates.add(j);
+					}
+				}
+			}
+		}
+
+		final List<Integer> matchingCandidates = new ArrayList<>();
+		for (Integer exponentCandidate : exponentCandidates) {
+
+
+			boolean matches = true;
+			for (int i = 0; i < hypotheses.size(); i++) {
+				final int input = getInput(hypotheses, i);
+				final int output = getOutput(hypotheses, i);
+
+				if (Math.pow(input, exponentCandidate) != output) {
+					matches = false;
+				}
+			}
+
+			if (matches) {
+				matchingCandidates.add(exponentCandidate);
+			}
+		}
+
+		if(matchingCandidates.size() == 1 ){
+			System.out.println(matchingCandidates);
+			return Optional.of((x) -> (int)Math.pow((int) x, matchingCandidates.get(0)));
+		} else if (matchingCandidates.size() > 1){
+			System.out.println("Found more than one solution: AnyExponentiation, with exponents " + matchingCandidates);
+		}
+
 		return Optional.empty();
+	}
+
+	protected int getInput (final List<Application> hypotheses, int position) {
+		return (int) hypotheses.get(position).getParameters().get(0);
+	}
+
+	protected int getOutput (final List<Application> hypotheses, int position) {
+		return (int) hypotheses.get(position).getOutput();
 	}
 }
