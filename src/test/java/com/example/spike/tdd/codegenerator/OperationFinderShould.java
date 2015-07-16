@@ -59,11 +59,7 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_the_division_by_two () {
-		final Function formula = findFormulaMatching(applicationsFor(4, 2, 2, 1));
-
-		assertThat(formula.apply(4), is(2));
-		assertThat(formula.apply(2), is(1));
-
+		findFormulaMatching(applicationsFor(4, 2, 2, 1));
 	}
 
 	@Test
@@ -93,9 +89,12 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_the_square_formula () {
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new Square());
+	}
 
-		final Function formula = findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new Square());
-
+	@Test
+	public void find_the_cubic_square_formula () {
+		findFormulaMatchingAndAssert(applicationsFor(2, 8, 3, 27), new CubicSquare());
 	}
 
 	private Applications applicationsFor (final int input1, final int output1, final int input2, final int output2) {
