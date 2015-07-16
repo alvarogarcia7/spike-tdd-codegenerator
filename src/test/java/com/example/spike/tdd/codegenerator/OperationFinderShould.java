@@ -110,6 +110,11 @@ public class OperationFinderShould {
 		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1), new AnyExponentiation());
 	}
 
+	@Test
+	public void find_exponentiation_to_10 () {
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1024), new AnyExponentiation());
+	}
+
 	private Applications applicationsFor (final int... inputsAndOutputs) {
 		if(inputsAndOutputs.length % 2 != 0) {
 			fail("every input should have an output");
