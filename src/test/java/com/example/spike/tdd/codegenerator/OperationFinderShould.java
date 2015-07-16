@@ -101,12 +101,12 @@ public class OperationFinderShould {
 	}
 
 	@Test
-	public void find_spike_exponentiation_to_one () {
+	public void find_exponentiation_to_one () {
 		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 2), new AnyExponentiation());
 	}
 
 	@Test
-	public void find_spike_exponentiation_to_zero () {
+	public void find_exponentiation_to_zero () {
 		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1), new AnyExponentiation());
 	}
 
