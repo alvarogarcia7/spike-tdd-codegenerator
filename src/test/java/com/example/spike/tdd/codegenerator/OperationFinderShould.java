@@ -99,8 +99,8 @@ public class OperationFinderShould {
 	}
 
 	@Test
-	public void find_any_square_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new AnyExponentiation());
+	public void find_spike_exponentiation_to_one () {
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 2), new AnyExponentiation());
 	}
 
 	private Applications applicationsFor (final int input1, final int output1, final int input2, final int output2) {
