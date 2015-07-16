@@ -110,12 +110,6 @@ public class OperationFinderShould {
 		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1), new AnyExponentiation());
 	}
 
-	private Applications applicationsFor (final int input1, final int output1, final int input2, final int output2) {
-		return getApplications(asList(
-				aNew().with(asList(input1), output1).build(),
-				aNew().with(asList(input2), output2).build()));
-	}
-
 	private Applications applicationsFor (final int... inputsAndOutputs) {
 		if(inputsAndOutputs.length % 2 != 0) {
 			fail("every input should have an output");
