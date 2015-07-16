@@ -58,9 +58,7 @@ public class OperationFinderShould {
 	}
 
 	@Test
-	public void find_the_division_by_the_output_is_the_output () {
-		//this is not the division by two nor the square (or its inverse) operation
-
+	public void find_the_division_by_two () {
 		final Function formula = findFormulaMatching(applicationsFor(4, 2, 2, 1));
 
 		assertThat(formula.apply(4), is(2));
