@@ -40,21 +40,15 @@ public class OperationFinderShould {
 	@Test
 	public void find_the_successor () {
 
-		final Function formula = findFormulaMatching(applicationsFor(2, 3, 3, 4));
-
-		assertThat(formula.apply(2), is(3));
-		assertThat(formula.apply(3), is(4));
+		findFormulaMatching(applicationsFor(2, 3, 3, 4));
 	}
 
 	@Test
-	public void find_the_formula_with_several_hypotheses () {
-		//multiplying by zero
-
+	public void find_the_constant () {
 		final Function formula = findFormulaMatching(applicationsFor(1, 0, 2, 0));
 
 		assertThat(formula.apply(1), is(0));
 		assertThat(formula.apply(2), is(0));
-
 	}
 
 	@Test
