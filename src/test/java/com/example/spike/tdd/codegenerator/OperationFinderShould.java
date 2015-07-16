@@ -90,12 +90,12 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_the_square_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new Square());
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new AnyExponentiation());
 	}
 
 	@Test
 	public void find_the_cubic_square_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(2, 8, 3, 27), new CubicSquare());
+		findFormulaMatchingAndAssert(applicationsFor(2, 8, 3, 27), new AnyExponentiation());
 	}
 
 	@Test

@@ -4,8 +4,10 @@ import com.example.spike.tdd.codegenerator.SingleIntOperation;
 import com.example.spike.tdd.codegenerator.application.Application;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 
 public class AnyExponentiation extends SingleIntOperation {
@@ -16,7 +18,7 @@ public class AnyExponentiation extends SingleIntOperation {
 	public Optional<Function> find (final List<Application> hypotheses) {
 
 		this.hypotheses = hypotheses;
-		final List<Integer> exponentCandidates = getCandidateExponents();
+		final Set<Integer> exponentCandidates = getCandidateExponents();
 
 		final List<Integer> matchingCandidates = filterAllThoseMatch(exponentCandidates);
 
@@ -30,7 +32,7 @@ public class AnyExponentiation extends SingleIntOperation {
 		return Optional.empty();
 	}
 
-	private List<Integer> filterAllThoseMatch (final List<Integer> exponentCandidates) {
+	private List<Integer> filterAllThoseMatch (final Set<Integer> exponentCandidates) {
 		final List<Integer> matchingCandidates = new ArrayList<>();
 		for (Integer exponentCandidate : exponentCandidates) {
 
@@ -52,8 +54,8 @@ public class AnyExponentiation extends SingleIntOperation {
 		return matchingCandidates;
 	}
 
-	private List<Integer> getCandidateExponents () {
-		final List<Integer> exponentCandidates = new ArrayList<>();
+	private Set<Integer> getCandidateExponents () {
+		final Set<Integer> exponentCandidates = new HashSet<>();
 		for (int i = 0; i < hypotheses.size(); i++) {
 			final int input = getInput(hypotheses, i);
 			final int output = getOutput(hypotheses, i);
