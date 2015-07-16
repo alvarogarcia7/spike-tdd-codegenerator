@@ -103,6 +103,11 @@ public class OperationFinderShould {
 		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 2), new AnyExponentiation());
 	}
 
+	@Test
+	public void find_spike_exponentiation_to_zero () {
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1), new AnyExponentiation());
+	}
+
 	private Applications applicationsFor (final int input1, final int output1, final int input2, final int output2) {
 		return getApplications(asList(
 				aNew().with(asList(input1), output1).build(),
