@@ -71,7 +71,7 @@ public class OperationFinderShould {
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Ambiguous function"));
 
-		findFormulaMatching(applicationFor(1, 1));
+		findFormulaMatching(applicationsFor(1, 1));
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class OperationFinderShould {
 
 		final Operation operation1 = mock(Operation.class);
 		doReturn(Operation.NO_FUNCTION).when(operation1).find(anyList());
-		final Applications applications = applicationFor(1, 1);
+		final Applications applications = applicationsFor(1, 1);
 
 		try {
 			new OperationFinder(applications, Arrays.asList(operation1, operation1)).findOperation();
@@ -130,10 +130,6 @@ public class OperationFinderShould {
 		}
 
 		return getApplications(applications);
-	}
-
-	private Applications applicationFor (final int input, final int output) {
-		return getApplications(asList(aNew().with(asList(input), output).build()));
 	}
 
 	private Applications getApplications (final List<Application> applications) {
