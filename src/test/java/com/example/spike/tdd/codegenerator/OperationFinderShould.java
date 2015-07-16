@@ -12,6 +12,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -20,6 +21,7 @@ import static com.example.spike.tdd.codegenerator.application.ApplicationBuilder
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.fail;
 import static org.mockito.Matchers.anyList;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -90,7 +92,7 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_the_square_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4), new AnyExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4, 3, 9, 4, 16, 5, 25), new AnyExponentiation());
 	}
 
 	@Test
@@ -112,6 +114,22 @@ public class OperationFinderShould {
 		return getApplications(asList(
 				aNew().with(asList(input1), output1).build(),
 				aNew().with(asList(input2), output2).build()));
+	}
+
+	private Applications applicationsFor (final int... inputsAndOutputs) {
+		if(inputsAndOutputs.length % 2 != 0) {
+			fail("every input should have an output");
+		}
+
+		final List<Application> applications = new ArrayList<>(inputsAndOutputs.length / 2);
+
+		for (int i = 0; i < inputsAndOutputs.length; i+=2) {
+			final Object input1 = inputsAndOutputs[i];
+			final Object output1 = inputsAndOutputs[i+1];
+			applications.add(aNew().with(asList(input1), output1).build());
+		}
+
+		return getApplications(applications);
 	}
 
 	private Applications applicationFor (final int input, final int output) {
