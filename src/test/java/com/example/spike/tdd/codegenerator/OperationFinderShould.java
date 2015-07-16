@@ -112,7 +112,7 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_exponentiation_to_10 () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1024), new AnyExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1024, 3, 59049), new AnyExponentiation());
 	}
 
 	private Applications applicationsFor (final int... inputsAndOutputs) {
