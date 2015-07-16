@@ -1,6 +1,5 @@
 package com.example.spike.tdd.codegenerator.operation;
 
-import com.example.spike.tdd.codegenerator.SingleIntOperation;
 import com.example.spike.tdd.codegenerator.application.Application;
 
 import java.util.ArrayList;
