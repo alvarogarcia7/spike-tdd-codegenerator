@@ -25,3 +25,7 @@ See
 > a result with each input, but does not say anything about how the result can be computed
 >
 > page 11-12 from Computability and Complexity: From a Programming Perspective by Neil D. Jones
+
+## Analogies
+
+The [Turing test](https://en.wikipedia.org/wiki/Turing_test)
