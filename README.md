@@ -24,4 +24,4 @@ See
 > For convenience one always writes this function thus: f(n) = 2n. So, a function associates
 > a result with each input, but does not say anything about how the result can be computed
 >
-> from Computability and Complexity, page 11-12
+> page 11-12 from Computability and Complexity: From a Programming Perspective by Neil D. Jones
