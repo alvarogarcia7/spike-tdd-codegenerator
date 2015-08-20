@@ -12,3 +12,16 @@ See
   * http://math.stackexchange.com/questions/952547/input-and-output-of-a-turing-machine
   * http://math.stackexchange.com/questions/318456/how-to-determine-a-function-from-outputs
   * [ask question](http://math.stackexchange.com/questions/ask), search for: Inferring the function from inputs and outputs
+
+ ## Random notes
+ 
+> We stress the important distinction between an algorithm and the mathematical function
+> it computes. A mathematical function is a set. For instance, the unary number-theoretic
+> function which returns its argument doubled is:
+> 
+> {(1,2),(2,4),(3,6),...}
+> 
+> For convenience one always writes this function thus: f(n) = 2n. So, a function associates
+> a result with each input, but does not say anything about how the result can be computed
+>
+> from Computability and Complexity, page 11-12
