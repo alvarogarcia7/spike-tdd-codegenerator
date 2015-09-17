@@ -38,18 +38,24 @@ public class OperationFinderShould {
 	@Test
 	public void find_the_constant_output () {
 
-		findFormulaMatching(applicationsFor(2, 2, 3, 2));
+		findFormulaMatching(applicationsFor(
+				2, 2,
+				3, 2));
 	}
 
 	@Test
 	public void find_the_successor () {
 
-		findFormulaMatching(applicationsFor(2, 3, 3, 4));
+		findFormulaMatching(applicationsFor(
+				2, 3,
+				3, 4));
 	}
 
 	@Test
 	public void find_the_constant () {
-		findFormulaMatching(applicationsFor(1, 0, 2, 0));
+		findFormulaMatching(applicationsFor(
+				1, 0,
+				2, 0));
 	}
 
 	@Test
@@ -58,12 +64,16 @@ public class OperationFinderShould {
 		expectedException.expect(UnsupportedOperationException.class);
 		expectedException.expectMessage(is("Not yet ready"));
 
-		findFormulaMatching(applicationsFor(1, 1, 1, 2));
+		findFormulaMatching(applicationsFor(
+				1, 1,
+				1, 2));
 	}
 
 	@Test
 	public void find_the_division_by_two () {
-		findFormulaMatching(applicationsFor(4, 2, 2, 1));
+		findFormulaMatching(applicationsFor(
+				4, 2,
+				2, 1));
 	}
 
 	@Test
@@ -93,37 +103,57 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_the_square_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 4, 3, 9, 4, 16, 5, 25), new PowerOf());
+		findFormulaMatchingAndAssert(applicationsFor(
+				1, 1,
+				2, 4,
+				3, 9,
+				4, 16,
+				5, 25), new PowerOf());
 	}
 
 	@Test
 	public void find_the_cubic_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(2, 8, 3, 27), new PowerOf());
+		findFormulaMatchingAndAssert(applicationsFor(
+				2, 8,
+				3, 27), new PowerOf());
 	}
 
 	@Test
 	public void find_exponentiation_to_one () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 2), new PowerOf());
+		findFormulaMatchingAndAssert(applicationsFor(
+				1, 1,
+				2, 2), new PowerOf());
 	}
 
 	@Test
 	public void find_exponentiation_to_zero () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1), new PowerOf());
+		findFormulaMatchingAndAssert(applicationsFor(
+				1, 1,
+				2, 1), new PowerOf());
 	}
 
 	@Test
 	public void find_exponentiation_to_10 () {
-		findFormulaMatchingAndAssert(applicationsFor(1, 1, 2, 1024, 3, 59049), new PowerOf());
+		findFormulaMatchingAndAssert(applicationsFor(
+				1, 1,
+				2, 1024,
+				3, 59049), new PowerOf());
 	}
 
 	@Test
 	public void find_base_two_exponentiation () {
-		findFormulaMatchingAndAssert(applicationsFor(0, 1, 1, 2, 2, 4), new BaseExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(
+				0, 1,
+				1, 2,
+				2, 4), new BaseExponentiation());
 	}
 
 	@Test
 	public void find_base_three_exponentiation () {
-		findFormulaMatchingAndAssert(applicationsFor(0, 1, 1, 3, 2, 9), new BaseExponentiation());
+		findFormulaMatchingAndAssert(applicationsFor(
+				0, 1,
+				1, 3,
+				2, 9), new BaseExponentiation());
 	}
 
 	private Applications applicationsFor (final int... inputsAndOutputs) {
