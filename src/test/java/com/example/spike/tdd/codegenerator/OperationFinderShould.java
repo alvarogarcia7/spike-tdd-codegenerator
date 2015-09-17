@@ -3,12 +3,13 @@ package com.example.spike.tdd.codegenerator;
 import com.example.spike.tdd.codegenerator.application.Application;
 import com.example.spike.tdd.codegenerator.application.Applications;
 import com.example.spike.tdd.codegenerator.operation.BaseExponentiation;
-import com.example.spike.tdd.codegenerator.operation.PowerOf;
 import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Difference;
 import com.example.spike.tdd.codegenerator.operation.Division;
+import com.example.spike.tdd.codegenerator.operation.Identity;
 import com.example.spike.tdd.codegenerator.operation.Operation;
 import com.example.spike.tdd.codegenerator.operation.OperationFinder;
+import com.example.spike.tdd.codegenerator.operation.PowerOf;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -33,7 +34,7 @@ public class OperationFinderShould {
 
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
-	private List<Operation> operations = asList(new Difference(), new Division(), new Constant());
+	private List<Operation> operations = asList(new Difference(), new Division(), new Constant(), new Identity());
 
 	@Test
 	public void find_the_constant_output () {
@@ -48,7 +49,9 @@ public class OperationFinderShould {
 
 		findFormulaMatching(applicationsFor(
 				2, 2,
-				3, 3));
+				3, 3,
+				5, 5,
+				9, 9));
 	}
 
 	@Test

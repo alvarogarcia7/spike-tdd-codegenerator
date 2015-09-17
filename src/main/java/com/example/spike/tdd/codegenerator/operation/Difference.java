@@ -13,6 +13,9 @@ public class Difference extends SingleIntOperation {
 		final int output = getOutput(hypotheses);
 
 		final int increment = output - input;
+		if (increment == 0) {
+			return Optional.empty();
+		}
 
 		return Optional.of((Function) (o) -> (int) o + increment);
 	}

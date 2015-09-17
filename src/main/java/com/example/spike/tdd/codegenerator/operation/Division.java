@@ -16,7 +16,7 @@ public class Division extends SingleIntOperation {
 			return NO_FUNCTION;
 		}
 		final int divisor = a / b;
-		if (divisor == 0) {
+		if (divisor == 0 || divisor == 1) {
 			return NO_FUNCTION;
 		}
 		return Optional.of((Function) (x) -> (int) x / divisor);
