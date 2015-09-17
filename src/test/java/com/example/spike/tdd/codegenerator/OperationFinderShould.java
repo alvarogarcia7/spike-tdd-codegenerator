@@ -44,6 +44,14 @@ public class OperationFinderShould {
 	}
 
 	@Test
+	public void find_the_identity () {
+
+		findFormulaMatching(applicationsFor(
+				2, 2,
+				3, 3));
+	}
+
+	@Test
 	public void find_the_successor () {
 
 		findFormulaMatching(applicationsFor(
