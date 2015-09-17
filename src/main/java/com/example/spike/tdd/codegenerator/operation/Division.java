@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
+/**
+ * The division operation.
+ *
+ * Limitations: does not find the divisor 0 nor divisor 1 (identity element)
+ */
 public class Division extends SingleIntOperation {
 
 	@Override

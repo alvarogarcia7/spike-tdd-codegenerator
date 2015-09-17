@@ -2,9 +2,9 @@ package com.example.spike.tdd.codegenerator;
 
 import com.example.spike.tdd.codegenerator.application.Application;
 import com.example.spike.tdd.codegenerator.application.Applications;
+import com.example.spike.tdd.codegenerator.operation.AdditionSubtraction;
 import com.example.spike.tdd.codegenerator.operation.BaseExponentiation;
 import com.example.spike.tdd.codegenerator.operation.Constant;
-import com.example.spike.tdd.codegenerator.operation.Difference;
 import com.example.spike.tdd.codegenerator.operation.Division;
 import com.example.spike.tdd.codegenerator.operation.Identity;
 import com.example.spike.tdd.codegenerator.operation.Operation;
@@ -34,7 +34,7 @@ public class OperationFinderShould {
 
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
-	private List<Operation> operations = asList(new Difference(), new Division(), new Constant(), new Identity());
+	private List<Operation> operations = asList(new AdditionSubtraction(), new Division(), new Constant(), new Identity());
 
 	@Test
 	public void find_the_constant_output () {

@@ -6,7 +6,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class Difference extends SingleIntOperation {
+/**
+ * Addition / Subtraction operation
+ *
+ * Does not find the identity element (0)
+ */
+public class AdditionSubtraction extends SingleIntOperation {
 	@Override
 	public Optional<Function> find (List<Application> hypotheses) {
 		final int input = firstInput(hypotheses);
