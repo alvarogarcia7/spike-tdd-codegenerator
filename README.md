@@ -26,9 +26,17 @@ See
 >
 > page 11-12 from Computability and Complexity: From a Programming Perspective by Neil D. Jones
 
+## Open questions
+
+  * Maybe there are problems with the infinites (+, -). For the moment they are not important because they're not computable (?)
+  * A line can only be defined by a function?
+  * In which sense the [type theory](https://en.wikipedia.org/wiki/Type_theory) that relations `2` to `1+1` limits the amount of equations for a line?
+
 ### Halting problem
 
 The halting problem to verify the function? maybe in the general case it doesn't, maybe it does in the implemented cases, because the number of input parameters is limited (Int, Integer, long, Float). But the functions that depend on other attributes are possibly unlimited.
+
+
 
 
 ## Analogies
