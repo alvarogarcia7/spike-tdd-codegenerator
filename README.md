@@ -26,6 +26,11 @@ See
 >
 > page 11-12 from Computability and Complexity: From a Programming Perspective by Neil D. Jones
 
+### Halting problem
+
+The halting problem to verify the function? maybe in the general case it doesn't, maybe it does in the implemented cases, because the number of input parameters is limited (Int, Integer, long, Float). But the functions that depend on other attributes are possibly unlimited.
+
+
 ## Analogies
 
 The [Turing test](https://en.wikipedia.org/wiki/Turing_test)
