@@ -14,7 +14,7 @@ public class Constant extends SingleIntOperation{
 
 		for (Application current : hypotheses) {
 			if (!current.getOutput().equals(first)) {
-				return Optional.empty();
+				return NO_FUNCTION;
 			}
 		}
 

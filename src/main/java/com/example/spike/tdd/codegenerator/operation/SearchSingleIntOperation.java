@@ -28,7 +28,7 @@ public abstract class SearchSingleIntOperation extends SingleIntOperation {
 			System.out.println("Found more than one solution: BaseExponentiation, with exponents " + matchingCandidates);
 		}
 
-		return Optional.empty();
+		return NO_FUNCTION;
 	}
 
 	private List<Integer> filterAllThoseMatch (final Set<Integer> exponentCandidates) {

@@ -7,13 +7,13 @@ import java.util.Optional;
 import java.util.function.Function;
 
 public class Identity extends SingleIntOperation {
-	
+
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
 
 		for (Application current : hypotheses) {
 			if (!current.getParameters().get(0).equals(current.getOutput())) {
-				return Optional.empty();
+				return NO_FUNCTION;
 			}
 		}
 
