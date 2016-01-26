@@ -13,12 +13,16 @@ public class Constant extends SingleIntOperation implements Representable {
 		final Object first = getOutput(hypotheses);
 
 		for (Application current : hypotheses) {
-			if (!current.getOutput().equals(first)) {
+			if (notTheSame(first, current)) {
 				return NO_FUNCTION;
 			}
 		}
 
 		return Optional.of((Function) (o) -> first);
+	}
+
+	private boolean notTheSame (final Object first, final Application current) {
+		return !current.getOutput().equals(first);
 	}
 
 	@Override
