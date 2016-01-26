@@ -17,4 +17,9 @@ public class OperationRepresentationShould {
 		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\t  x  ")));
 	}
 
+	@Test
+	public void not_care_about_newlines_in_the_representation () {
+		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\nx")));
+	}
+
 }
