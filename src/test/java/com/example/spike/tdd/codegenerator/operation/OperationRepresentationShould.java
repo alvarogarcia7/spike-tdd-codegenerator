@@ -14,12 +14,12 @@ public class OperationRepresentationShould {
 
 	@Test
 	public void not_care_about_tabs_in_the_representation () {
-		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\tx")));
+		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\tx\t")));
 	}
 
 	@Test
 	public void not_care_about_newlines_in_the_representation () {
-		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\nx")));
+		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\nx\n")));
 	}
 
 }
