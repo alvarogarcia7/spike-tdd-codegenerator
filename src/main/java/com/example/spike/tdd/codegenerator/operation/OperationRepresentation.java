@@ -3,12 +3,16 @@ package com.example.spike.tdd.codegenerator.operation;
 public class OperationRepresentation {
 	private final String description;
 
-	private OperationRepresentation (final String description) {
+	protected OperationRepresentation (final String description) {
 		this.description = description;
 	}
 
 	public static OperationRepresentation oneVariable (String description) {
 		return new OperationRepresentation("f(x) = " + description);
+	}
+
+	public static OperationRepresentation oneVariable (String description, String... restrictions) {
+		return new RestrictedOperationRepresentation("f(x) = " + description, restrictions);
 	}
 
 	@Override

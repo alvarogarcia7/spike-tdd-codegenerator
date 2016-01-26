@@ -8,10 +8,10 @@ import java.util.function.Function;
 
 /**
  * Addition / Subtraction operation
- *
+ * <p>
  * Does not find the identity element (0)
  */
-public class AdditionSubtraction extends SingleIntOperation {
+public class AdditionSubtraction extends SingleIntOperation implements Representable {
 	@Override
 	public Optional<Function> find (List<Application> hypotheses) {
 		final int input = firstInput(hypotheses);
@@ -23,5 +23,10 @@ public class AdditionSubtraction extends SingleIntOperation {
 		}
 
 		return Optional.of((Function) (o) -> (int) o + increment);
+	}
+
+	@Override
+	public OperationRepresentation representation () {
+		return OperationRepresentation.oneVariable("x + k", "k <> 0");
 	}
 }
