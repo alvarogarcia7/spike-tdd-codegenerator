@@ -9,7 +9,7 @@ public class OperationRepresentationShould {
 
 	@Test
 	public void not_care_about_whitespace_in_the_representation () {
-		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("  x  ")));
+		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable(" x ")));
 	}
 
 	@Test
