@@ -19,7 +19,8 @@ public class RestrictedOperationRepresentation extends OperationRepresentation {
 	 * https://en.wikipedia.org/wiki/Reification_(computer_science)
 	 */
 	private List<Restriction> reify (final String[] restrictionRepresentations) {
-		return Collections.unmodifiableList(Arrays.asList(restrictionRepresentations).stream().map(Restriction::aNew)
-				.collect(Collectors.toList()));
+		final List<Restriction> result = Arrays.asList(restrictionRepresentations).stream().map(Restriction::aNew)
+				.collect(Collectors.toList());
+		return Collections.unmodifiableList(result);
 	}
 }
