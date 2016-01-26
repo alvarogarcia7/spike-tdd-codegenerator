@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class RestrictedOperationRepresentation extends OperationRepresentation {
+public class RestrictedOperationRepresentation extends BasicOperationRepresentation {
 	private final List<Restriction> restrictions;
 
-	public RestrictedOperationRepresentation (final String representation, final String[] restrictionRepresentations) {
+	protected RestrictedOperationRepresentation (final String representation, final String[] restrictionRepresentations) {
 		super(representation);
 		this.restrictions = reify(restrictionRepresentations);
 	}
