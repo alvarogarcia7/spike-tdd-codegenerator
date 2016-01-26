@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class Constant extends SingleIntOperation{
+public class Constant extends SingleIntOperation implements Representable {
 
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
@@ -19,5 +19,10 @@ public class Constant extends SingleIntOperation{
 		}
 
 		return Optional.of((Function) (o) -> first);
+	}
+
+	@Override
+	public OperationRepresentation representation () {
+		return new OperationRepresentation("f(x) = k");
 	}
 }

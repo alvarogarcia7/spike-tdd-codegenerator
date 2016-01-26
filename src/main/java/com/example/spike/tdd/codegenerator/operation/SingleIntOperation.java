@@ -1,7 +1,6 @@
 package com.example.spike.tdd.codegenerator.operation;
 
 import com.example.spike.tdd.codegenerator.application.Application;
-import com.example.spike.tdd.codegenerator.operation.Operation;
 
 import java.util.List;
 
