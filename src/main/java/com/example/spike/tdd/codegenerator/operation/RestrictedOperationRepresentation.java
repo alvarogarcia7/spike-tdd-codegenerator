@@ -10,7 +10,14 @@ public class RestrictedOperationRepresentation extends OperationRepresentation {
 
 	public RestrictedOperationRepresentation (final String representation, final String[] restrictionRepresentations) {
 		super(representation);
-		this.restrictions = Collections.unmodifiableList(Arrays.asList(restrictionRepresentations).stream().map(Restriction::aNew)
+		this.restrictions = reify(restrictionRepresentations);
+	}
+
+	/**
+	 * https://en.wikipedia.org/wiki/Reification_(computer_science)
+	 */
+	private List<Restriction> reify (final String[] restrictionRepresentations) {
+		return Collections.unmodifiableList(Arrays.asList(restrictionRepresentations).stream().map(Restriction::aNew)
 				.collect(Collectors.toList()));
 	}
 }
