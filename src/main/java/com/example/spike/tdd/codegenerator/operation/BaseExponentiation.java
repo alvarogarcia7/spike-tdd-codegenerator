@@ -8,6 +8,6 @@ public class BaseExponentiation extends SearchSingleIntOperation implements Repr
 	}
 
 	public OperationRepresentation representation() {
-		return new OperationRepresentation("f(x) = k^x");
+		return OperationRepresentation.oneVariable("k^x");
 	}
 }

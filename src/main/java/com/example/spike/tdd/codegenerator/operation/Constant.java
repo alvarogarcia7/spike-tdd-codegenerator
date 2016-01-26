@@ -23,6 +23,6 @@ public class Constant extends SingleIntOperation implements Representable {
 
 	@Override
 	public OperationRepresentation representation () {
-		return new OperationRepresentation("f(x) = k");
+		return OperationRepresentation.oneVariable("k");
 	}
 }

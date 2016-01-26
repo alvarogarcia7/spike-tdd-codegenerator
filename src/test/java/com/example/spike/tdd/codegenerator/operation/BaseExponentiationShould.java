@@ -10,7 +10,7 @@ public class BaseExponentiationShould {
 	@Test
 	public void represent_the_operation () {
 
-		assertThat(new BaseExponentiation().representation(), is(new OperationRepresentation("f(x) = k ^ x")));
+		assertThat(new BaseExponentiation().representation(), is(OperationRepresentation.oneVariable("k ^ x")));
 	}
 
 }

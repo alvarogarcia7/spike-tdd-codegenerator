@@ -10,7 +10,7 @@ public class ConstantShould {
 	@Test
 	public void have_a_representation () {
 
-		assertThat(new Constant().representation(), is(new OperationRepresentation("f(x) = k")));
+		assertThat(new Constant().representation(), is(OperationRepresentation.oneVariable("k")));
 	}
 
 }
