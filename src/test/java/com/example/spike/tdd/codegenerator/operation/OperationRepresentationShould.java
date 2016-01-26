@@ -14,7 +14,7 @@ public class OperationRepresentationShould {
 
 	@Test
 	public void not_care_about_tabs_in_the_representation () {
-		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\t  x  ")));
+		assertThat(OperationRepresentation.oneVariable("x"), is(OperationRepresentation.oneVariable("\tx")));
 	}
 
 	@Test
