@@ -1,5 +1,8 @@
 package com.example.spike.tdd.codegenerator.operation;
 
+import com.example.spike.tdd.codegenerator.operation.representation.OperationRepresentation;
+import com.example.spike.tdd.codegenerator.operation.representation.Representable;
+
 public class BaseExponentiation extends SearchSingleIntOperation implements Representable {
 
 	@Override

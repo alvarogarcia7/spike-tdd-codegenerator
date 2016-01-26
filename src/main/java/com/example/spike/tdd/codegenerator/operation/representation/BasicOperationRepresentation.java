@@ -1,4 +1,4 @@
-package com.example.spike.tdd.codegenerator.operation;
+package com.example.spike.tdd.codegenerator.operation.representation;
 
 public class BasicOperationRepresentation extends OperationRepresentation {
 	private final String description;

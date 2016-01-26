@@ -1,5 +1,6 @@
 package com.example.spike.tdd.codegenerator.operation;
 
+import com.example.spike.tdd.codegenerator.operation.representation.OperationRepresentation;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;

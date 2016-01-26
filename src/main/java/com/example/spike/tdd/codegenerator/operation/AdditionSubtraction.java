@@ -1,6 +1,8 @@
 package com.example.spike.tdd.codegenerator.operation;
 
 import com.example.spike.tdd.codegenerator.application.Application;
+import com.example.spike.tdd.codegenerator.operation.representation.OperationRepresentation;
+import com.example.spike.tdd.codegenerator.operation.representation.Representable;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package com.example.spike.tdd.codegenerator.operation;
+package com.example.spike.tdd.codegenerator.operation.representation;
 
 import java.util.Arrays;
 import java.util.Collections;
