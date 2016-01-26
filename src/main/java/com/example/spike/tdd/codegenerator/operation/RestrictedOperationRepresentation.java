@@ -14,6 +14,8 @@ public class RestrictedOperationRepresentation extends OperationRepresentation {
 	}
 
 	/**
+	 * Reification of the description, as opposite of type erasure
+	 *
 	 * https://en.wikipedia.org/wiki/Reification_(computer_science)
 	 */
 	private List<Restriction> reify (final String[] restrictionRepresentations) {
