@@ -7,6 +7,7 @@ import com.example.spike.tdd.codegenerator.operation.BaseExponentiation;
 import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Division;
 import com.example.spike.tdd.codegenerator.operation.Identity;
+import com.example.spike.tdd.codegenerator.operation.Multiplication;
 import com.example.spike.tdd.codegenerator.operation.Operation;
 import com.example.spike.tdd.codegenerator.operation.OperationFinder;
 import com.example.spike.tdd.codegenerator.operation.PowerOf;
@@ -85,6 +86,13 @@ public class OperationFinderShould {
 		findFormulaMatching(applicationsFor(
 				4, 2,
 				2, 1));
+	}
+
+	@Test
+	public void find_the_multiplication_by_two () {
+		findFormulaMatchingAndAssert(applicationsFor(
+				2, 4,
+				1, 2), new Multiplication());
 	}
 
 	@Test
