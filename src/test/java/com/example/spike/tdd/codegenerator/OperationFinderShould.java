@@ -6,8 +6,8 @@ import com.example.spike.tdd.codegenerator.operation.AdditionSubtraction;
 import com.example.spike.tdd.codegenerator.operation.BaseExponentiation;
 import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Division;
-import com.example.spike.tdd.codegenerator.operation.Identity;
 import com.example.spike.tdd.codegenerator.operation.Equation2D;
+import com.example.spike.tdd.codegenerator.operation.Identity;
 import com.example.spike.tdd.codegenerator.operation.Multiplication;
 import com.example.spike.tdd.codegenerator.operation.Operation;
 import com.example.spike.tdd.codegenerator.operation.OperationFinder;
@@ -178,17 +178,26 @@ public class OperationFinderShould {
 
 	@Test
 	public void find_a_composed_formula () {
-		findFormulaMatchingAndAssert(applicationsFor(
-				0, f2x_plus_1(0),
-				1, f2x_plus_1(1),
-				2, f2x_plus_1(2)), new Equation2D());
+		findFormulaMatchingAndAssert(applicationsFor(this::f2x_plus_1, 0,1,2), new Equation2D());
+	}
+
+	private Applications applicationsFor (final Function<Integer, Integer> f, final Integer... inputs) {
+		final Integer[] inputsAndOutputs = new Integer[2 * inputs.length];
+		 int i = 0;
+		for (Integer input : inputs) {
+			inputsAndOutputs[i] = input;
+			inputsAndOutputs[i + 1] = f.apply(input);
+			i += 2;
+		}
+
+		return applicationsFor(inputsAndOutputs);
 	}
 
 	private int f2x_plus_1 (final int x) {
 		return 2 * x + 1;
 	}
 
-	private Applications applicationsFor (final int... inputsAndOutputs) {
+	private Applications applicationsFor (final Integer... inputsAndOutputs) {
 		if(inputsAndOutputs.length % 2 != 0) {
 			fail("every input should have an output");
 		}
