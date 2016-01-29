@@ -31,6 +31,17 @@ public class Equation2D extends SingleIntOperation {
 				.collect(Collectors.toList());
 
 
+		Integer startingPoint = obtainStartingPoint(inputParameters, results);
+
+		final int inclination = obtainInclination(inputParameters, results);
+		return buildLineFunction(startingPoint, inclination);
+	}
+
+	private int obtainInclination (final List<Integer> inputParameters, final List<Integer> results) {
+		return (results.get(1) - results.get(0)) / (inputParameters.get(1) - inputParameters.get(0));
+	}
+
+	private Integer obtainStartingPoint (final List<Integer> inputParameters, final List<Integer> results) {
 		if(!inputParameters.contains(0)){
 			throw new RuntimeException("Parameters must include function at x = 0");
 		}
@@ -42,9 +53,7 @@ public class Equation2D extends SingleIntOperation {
 				startingPoint = results.get(i);
 			}
 		}
-
-		final int incline = (results.get(1) - results.get(0)) / (inputParameters.get(1) - inputParameters.get(0));
-		return buildLineFunction(startingPoint, incline);
+		return startingPoint;
 	}
 
 	private Function buildLineFunction (final Integer startingPoint, final int incline) {
