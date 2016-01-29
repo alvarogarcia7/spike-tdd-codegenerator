@@ -38,7 +38,9 @@ public class Equation2D extends SingleIntOperation {
 	}
 
 	private int obtainInclination (final List<Integer> inputParameters, final List<Integer> results) {
-		return (results.get(1) - results.get(0)) / (inputParameters.get(1) - inputParameters.get(0));
+		final int deltaY = results.get(1) - results.get(0);
+		final int deltaX = inputParameters.get(1) - inputParameters.get(0);
+		return deltaY / deltaX;
 	}
 
 	private Integer obtainStartingPoint (final List<Integer> inputParameters, final List<Integer> results) {
