@@ -1,4 +1,4 @@
-# spike-tdd-codegenerator
+# TDD code generator ![build status](https://travis-ci.org/alvarogarcia7/spike-tdd-codegenerator.svg "hopefully green")
 
 This might help: telling the compiler to search for the solution. 
 
