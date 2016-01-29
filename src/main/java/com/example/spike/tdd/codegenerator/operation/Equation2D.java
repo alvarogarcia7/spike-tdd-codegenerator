@@ -11,6 +11,18 @@ public class Equation2D extends SingleIntOperation {
 
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
+		final Function g = obtainLineFunctionMatching(hypotheses);
+
+		final int a = firstInput(hypotheses);
+		final int b = getOutput(hypotheses);
+
+		if (g.apply(a).equals(b)) {
+			return Optional.of(g);
+		}
+		return Optional.empty();
+	}
+
+	private Function obtainLineFunctionMatching (final List<Application> hypotheses) {
 		final List<Integer> inputParameters = hypotheses.stream()
 				.map(Application::getParameters).map(x -> (int) x.get(0))
 				.collect(Collectors.toList());
@@ -31,19 +43,9 @@ public class Equation2D extends SingleIntOperation {
 			}
 		}
 
-
 		final int incline = (results.get(1) - results.get(0)) / (inputParameters.get(1) - inputParameters.get(0));
-
-		final int a = firstInput(hypotheses);
-		final int b = getOutput(hypotheses);
-
 		final Function f = (x) -> (int) x * incline;
 		final Integer finalStartingPoint = startingPoint;
-		final Function g = f.andThen((x) -> (int) x + finalStartingPoint);
-
-		if (g.apply(a).equals(b)) {
-			return Optional.of(g);
-		}
-		return Optional.empty();
+		return f.andThen((x) -> (int) x + finalStartingPoint);
 	}
 }
