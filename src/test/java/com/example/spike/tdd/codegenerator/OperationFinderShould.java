@@ -7,7 +7,7 @@ import com.example.spike.tdd.codegenerator.operation.BaseExponentiation;
 import com.example.spike.tdd.codegenerator.operation.Constant;
 import com.example.spike.tdd.codegenerator.operation.Division;
 import com.example.spike.tdd.codegenerator.operation.Identity;
-import com.example.spike.tdd.codegenerator.operation.MultipleFormula;
+import com.example.spike.tdd.codegenerator.operation.Equation2D;
 import com.example.spike.tdd.codegenerator.operation.Multiplication;
 import com.example.spike.tdd.codegenerator.operation.Operation;
 import com.example.spike.tdd.codegenerator.operation.OperationFinder;
@@ -181,7 +181,7 @@ public class OperationFinderShould {
 		findFormulaMatchingAndAssert(applicationsFor(
 				0, f2x_plus_1(0),
 				1, f2x_plus_1(1),
-				2, f2x_plus_1(2)), new MultipleFormula(new Multiplication(), new AdditionSubtraction()));
+				2, f2x_plus_1(2)), new Equation2D());
 	}
 
 	private int f2x_plus_1 (final int x) {

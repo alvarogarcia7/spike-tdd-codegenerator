@@ -7,12 +7,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class MultipleFormula extends SingleIntOperation {
-	private final Operation[] operations;
-
-	public MultipleFormula (final Operation... operations) {
-		this.operations = operations;
-	}
+public class Equation2D extends SingleIntOperation {
 
 	@Override
 	public Optional<Function> find (final List<Application> hypotheses) {
