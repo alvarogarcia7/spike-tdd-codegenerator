@@ -44,6 +44,10 @@ public class Equation2D extends SingleIntOperation {
 		}
 
 		final int incline = (results.get(1) - results.get(0)) / (inputParameters.get(1) - inputParameters.get(0));
+		return buildLineFunction(startingPoint, incline);
+	}
+
+	private Function buildLineFunction (final Integer startingPoint, final int incline) {
 		final Function f = (x) -> (int) x * incline;
 		final Integer finalStartingPoint = startingPoint;
 		return f.andThen((x) -> (int) x + finalStartingPoint);
