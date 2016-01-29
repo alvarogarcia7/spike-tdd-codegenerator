@@ -30,9 +30,7 @@ public class Equation2D extends SingleIntOperation {
 				.map(x -> (int) x.getOutput())
 				.collect(Collectors.toList());
 
-
 		Integer startingPoint = obtainStartingPoint(inputParameters, results);
-
 		final int inclination = obtainInclination(inputParameters, results);
 		return buildLineFunction(startingPoint, inclination);
 	}
